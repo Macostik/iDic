@@ -14,6 +14,7 @@
 		56EB71F21E9AC21D00BA1A8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EB71F01E9AC21D00BA1A8C /* LaunchScreen.storyboard */; };
 		56EB71FD1E9AC21D00BA1A8C /* iDicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB71FC1E9AC21D00BA1A8C /* iDicTests.swift */; };
 		56EB72081E9AC21D00BA1A8C /* iDicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB72071E9AC21D00BA1A8C /* iDicUITests.swift */; };
+		7509331D97989CBE511769DB /* Pods_iDic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B827653B47987DF79D958D09 /* Pods_iDic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25C8ECBE013F8C70D8FC2BC5 /* Pods-iDic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDic.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDic/Pods-iDic.release.xcconfig"; sourceTree = "<group>"; };
 		56EB71E41E9AC21D00BA1A8C /* iDic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EB71E71E9AC21D00BA1A8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EB71E91E9AC21D00BA1A8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		56EB72031E9AC21D00BA1A8C /* iDicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EB72071E9AC21D00BA1A8C /* iDicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDicUITests.swift; sourceTree = "<group>"; };
 		56EB72091E9AC21D00BA1A8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B827653B47987DF79D958D09 /* Pods_iDic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iDic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9A96CCC2F5E26FDB7BE4E7E /* Pods-iDic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDic/Pods-iDic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7509331D97989CBE511769DB /* Pods_iDic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				56EB71FB1E9AC21D00BA1A8C /* iDicTests */,
 				56EB72061E9AC21D00BA1A8C /* iDicUITests */,
 				56EB71E51E9AC21D00BA1A8C /* Products */,
+				BA17EADD994237F89B9C2024 /* Pods */,
+				8DD3035E1C8CF59657BCF521 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = iDicUITests;
 			sourceTree = "<group>";
 		};
+		8DD3035E1C8CF59657BCF521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B827653B47987DF79D958D09 /* Pods_iDic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA17EADD994237F89B9C2024 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9A96CCC2F5E26FDB7BE4E7E /* Pods-iDic.debug.xcconfig */,
+				25C8ECBE013F8C70D8FC2BC5 /* Pods-iDic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56EB720C1E9AC21D00BA1A8C /* Build configuration list for PBXNativeTarget "iDic" */;
 			buildPhases = (
+				5F246CBF19FB419D294A8055 /* [CP] Check Pods Manifest.lock */,
 				56EB71E01E9AC21D00BA1A8C /* Sources */,
 				56EB71E11E9AC21D00BA1A8C /* Frameworks */,
 				56EB71E21E9AC21D00BA1A8C /* Resources */,
+				6DF5D16AF5E47982A5F32C78 /* [CP] Embed Pods Frameworks */,
+				5F8BD8DFEF1CF76549C6CAD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,7 +221,7 @@
 					56EB71E31E9AC21D00BA1A8C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 224SJKKLQ3;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					56EB71F71E9AC21D00BA1A8C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -256,6 +283,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5F246CBF19FB419D294A8055 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5F8BD8DFEF1CF76549C6CAD9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iDic/Pods-iDic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DF5D16AF5E47982A5F32C78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iDic/Pods-iDic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		56EB71E01E9AC21D00BA1A8C /* Sources */ = {
@@ -411,26 +486,34 @@
 		};
 		56EB720D1E9AC21D00BA1A8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9A96CCC2F5E26FDB7BE4E7E /* Pods-iDic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuriy Granchenko (3WYNX9RJ52)";
 				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				INFOPLIST_FILE = iDic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuraGranchenko.iDic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f7f9e4b9-07ea-4cd0-b01d-82d3a5a4e8a7";
+				PROVISIONING_PROFILE_SPECIFIER = iDic_Developer_Profile;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		56EB720E1E9AC21D00BA1A8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25C8ECBE013F8C70D8FC2BC5 /* Pods-iDic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yura Granchenko (224SJKKLQ3)";
 				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				INFOPLIST_FILE = iDic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuraGranchenko.iDic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ee0b117f-6ed9-4f3d-9c07-a3e4c3fd3ac5";
+				PROVISIONING_PROFILE_SPECIFIER = iDic_Ad_Hoc_Profile;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -512,6 +595,7 @@
 				56EB720E1E9AC21D00BA1A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56EB720F1E9AC21D00BA1A8C /* Build configuration list for PBXNativeTarget "iDicTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +604,7 @@
 				56EB72111E9AC21D00BA1A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56EB72121E9AC21D00BA1A8C /* Build configuration list for PBXNativeTarget "iDicUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +613,7 @@
 				56EB72141E9AC21D00BA1A8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
