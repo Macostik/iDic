@@ -9,7 +9,8 @@ target 'iDic' do
   pod 'Alamofire', '~> 4.0'
   pod 'SnapKit'
   pod 'SwiftyJSON'
-
+  pod 'lottie-ios'
+  pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git', :commit => '3cc6b1c3df76d709277a112fb1ad6a4630b0e556'
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|

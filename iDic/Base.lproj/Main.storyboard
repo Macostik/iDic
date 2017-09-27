@@ -1,14 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="idic.ttf">
+            <string>idic</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="iDic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +25,109 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-Fy-xrb" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgR-ZJ-uBU" customClass="TextField" customModule="iDic" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="302" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alm-Yc-Yhh" customClass="Label" customModule="iDic" customModuleProvider="target">
+                                        <rect key="frame" x="334" y="0.0" width="25" height="30"/>
+                                        <fontDescription key="fontDescription" name="idic" family="idic" pointSize="25"/>
+                                        <color key="textColor" red="0.0" green="0.73079637500000005" blue="0.81962000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Alm-Yc-Yhh" secondAttribute="bottom" id="3yr-Iu-aXD"/>
+                                    <constraint firstAttribute="bottom" secondItem="hgR-ZJ-uBU" secondAttribute="bottom" id="62h-vo-gwb"/>
+                                    <constraint firstItem="hgR-ZJ-uBU" firstAttribute="top" secondItem="KTs-Fy-xrb" secondAttribute="top" id="BJS-97-tn9"/>
+                                    <constraint firstItem="hgR-ZJ-uBU" firstAttribute="leading" secondItem="KTs-Fy-xrb" secondAttribute="leading" constant="16" id="Ocq-9W-deF"/>
+                                    <constraint firstItem="Alm-Yc-Yhh" firstAttribute="top" secondItem="KTs-Fy-xrb" secondAttribute="top" id="Omc-Tm-zdw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Alm-Yc-Yhh" secondAttribute="trailing" constant="16" id="Su0-8N-bLr"/>
+                                    <constraint firstItem="Alm-Yc-Yhh" firstAttribute="leading" secondItem="hgR-ZJ-uBU" secondAttribute="trailing" constant="16" id="Vzz-K1-Nwt"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ona-vE-fYL" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="110" width="375" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-1z-1vr" customClass="TextField" customModule="iDic" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="0.0" width="302" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8E-yO-RGl" customClass="Label" customModule="iDic" customModuleProvider="target">
+                                        <rect key="frame" x="334" y="0.0" width="25" height="30"/>
+                                        <fontDescription key="fontDescription" name="idic" family="idic" pointSize="25"/>
+                                        <color key="textColor" red="0.0" green="0.73079637500000005" blue="0.81962000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1DP-1z-1vr" secondAttribute="bottom" id="Fgu-tJ-4iU"/>
+                                    <constraint firstAttribute="trailing" secondItem="i8E-yO-RGl" secondAttribute="trailing" constant="16" id="OJL-Uy-na0"/>
+                                    <constraint firstAttribute="bottom" secondItem="i8E-yO-RGl" secondAttribute="bottom" id="SpF-Ch-3Jr"/>
+                                    <constraint firstItem="i8E-yO-RGl" firstAttribute="leading" secondItem="1DP-1z-1vr" secondAttribute="trailing" constant="16" id="TPS-o7-aaf"/>
+                                    <constraint firstItem="i8E-yO-RGl" firstAttribute="top" secondItem="ona-vE-fYL" secondAttribute="top" id="eJ7-aj-MYb"/>
+                                    <constraint firstItem="1DP-1z-1vr" firstAttribute="leading" secondItem="ona-vE-fYL" secondAttribute="leading" constant="16" id="fWb-lu-Ora"/>
+                                    <constraint firstItem="1DP-1z-1vr" firstAttribute="top" secondItem="ona-vE-fYL" secondAttribute="top" id="odm-qU-Gn6"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owb-Pr-7WK" customClass="Button" customModule="iDic" customModuleProvider="target">
+                                <rect key="frame" x="167" y="190" width="40" height="52"/>
+                                <fontDescription key="fontDescription" name="idic" family="idic" pointSize="40"/>
+                                <state key="normal" title="d">
+                                    <color key="titleColor" red="0.0" green="0.73079637500000005" blue="0.81962000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdX-qN-0J7">
+                                <rect key="frame" x="0.0" y="292" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="1M2-Ce-Z5M"/>
+                                    <constraint firstAttribute="width" constant="375" id="ocn-1B-xgh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="name" value="launch"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9251912264194444" green="0.98593225380000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ona-vE-fYL" secondAttribute="trailing" id="A1m-U4-u3l"/>
+                            <constraint firstItem="ona-vE-fYL" firstAttribute="top" secondItem="KTs-Fy-xrb" secondAttribute="bottom" constant="30" id="Fl5-DR-0I2"/>
+                            <constraint firstAttribute="trailing" secondItem="KTs-Fy-xrb" secondAttribute="trailing" id="Yen-TG-3cv"/>
+                            <constraint firstAttribute="bottom" secondItem="GdX-qN-0J7" secondAttribute="bottom" id="el3-BM-fAj"/>
+                            <constraint firstAttribute="trailing" secondItem="GdX-qN-0J7" secondAttribute="trailing" id="gaR-5E-69B"/>
+                            <constraint firstItem="KTs-Fy-xrb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nfo-Ux-1rD"/>
+                            <constraint firstItem="GdX-qN-0J7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pPa-ks-Fb5"/>
+                            <constraint firstItem="owb-Pr-7WK" firstAttribute="top" secondItem="ona-vE-fYL" secondAttribute="bottom" constant="50" id="rbI-fV-zN9"/>
+                            <constraint firstItem="ona-vE-fYL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xfB-CZ-VVQ"/>
+                            <constraint firstItem="KTs-Fy-xrb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="zGM-ev-Hm0"/>
+                            <constraint firstItem="owb-Pr-7WK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zYg-UZ-Dte"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
