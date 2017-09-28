@@ -1,9 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="VerdanaBold.ttf">
+            <string>Verdana-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -14,9 +23,44 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="kIV-7U-aVV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="nNg-Pl-f9r">
+                                <rect key="frame" x="147.66666666666666" y="272.33333333333331" width="100" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Fir-zG-qAT">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="85"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="170" id="piG-hy-5uv">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iDic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1B-v2-fF1">
+                                <rect key="frame" x="175.33333333333334" y="432.33333333333326" width="63.333333333333314" height="36.666666666666686"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="30"/>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nNg-Pl-f9r" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-53.5" id="5QZ-Z0-ra1"/>
+                            <constraint firstAttribute="trailing" secondItem="kIV-7U-aVV" secondAttribute="trailing" id="9P6-LR-j9k"/>
+                            <constraint firstAttribute="bottom" secondItem="kIV-7U-aVV" secondAttribute="bottom" id="QQw-qS-Toa"/>
+                            <constraint firstItem="kIV-7U-aVV" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Qxq-zV-Bf6"/>
+                            <constraint firstItem="H1B-v2-fF1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Um1-tv-G3y"/>
+                            <constraint firstItem="nNg-Pl-f9r" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-9.5" id="VVQ-HA-C8e"/>
+                            <constraint firstItem="H1B-v2-fF1" firstAttribute="top" secondItem="nNg-Pl-f9r" secondAttribute="bottom" constant="75" id="qtx-Xb-pgY"/>
+                            <constraint firstItem="kIV-7U-aVV" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="vpC-TZ-dJH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +68,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="750" height="1334"/>
+        <image name="logo" width="208" height="185"/>
+    </resources>
 </document>
