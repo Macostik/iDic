@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import GoogleSignIn
 
 @UIApplicationMain
 
@@ -60,6 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let aps = userInfo["aps"] as! [String: Any]
         print("\(aps)")
     }
-
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
+    }
 }
 

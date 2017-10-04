@@ -214,6 +214,9 @@
                                 <state key="normal" title="Login with Google+" backgroundImage="loginFacebookButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInGoogleWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RIE-o3-tas"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bw4-4U-DyX" userLabel="FacebookButton">
                                 <rect key="frame" x="40" y="584" width="295" height="60"/>

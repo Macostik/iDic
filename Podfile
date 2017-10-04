@@ -1,16 +1,17 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'iDic' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   
   pod 'RealmSwift'
+  pod 'Google/SignIn'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
-  pod 'Alamofire', '~> 4.0'
-  pod 'SnapKit'
+  pod 'Alamofire'
+  pod 'SnapKit', '~> 3.2.0'
   pod 'SwiftyJSON'
   pod 'lottie-ios'
   pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git', :commit => '3cc6b1c3df76d709277a112fb1ad6a4630b0e556'

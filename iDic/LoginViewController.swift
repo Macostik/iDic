@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import StreamView
-import FacebookCore
 import FacebookLogin
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {
@@ -29,6 +30,52 @@ class LoginViewController: UIViewController {
                 print("Logged in!")
             }
         }
+    }
+    
+    @IBAction func signInGoogle(sender: AnyObject) {
+        GIDSignIn.sharedInstance().clientID = "A202808522605-askgpbpnuh115ucicurcfl4e3j6qhsll.apps.googleusercontent.com"
+        
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: sourceApplication,
+                                                 annotation: annotation)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: nil)
+        } else {
+            let userId = user.userID
+            let idToken = user.authentication.idToken
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            print (">>self - \(idToken)<<")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        print (">>self - \(error)<<")
+    }
+    
+    func signIn(signIn: GIDSignIn!,
+                presentViewController viewController: UIViewController!) {
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the "Sign in with Google" view
+    func signIn(signIn: GIDSignIn!,
+                dismissViewController viewController: UIViewController!) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
