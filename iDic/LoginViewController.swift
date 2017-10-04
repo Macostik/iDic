@@ -8,17 +8,27 @@
 
 import UIKit
 import StreamView
-import SnapKit
-import Lottie
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let animationView = LOTAnimationView(name: "launch")
-        self.view.addSubview(animationView)
-        animationView.play()
-        animationView.loopAnimation = true
+    }
+    
+    @IBAction func facebookLogin(sender: AnyObject) {
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Logged in!")
+            }
+        }
     }
 }
 

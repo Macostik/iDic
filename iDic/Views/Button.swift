@@ -17,15 +17,6 @@ protocol Selectable: class {
     var selected: Bool { get set }
 }
 
-extension UIControl: Highlightable, Selectable {}
-
-extension UILabel: Highlightable, Selectable {
-    var selected: Bool {
-        get { return isHighlighted }
-        set { isHighlighted = newValue }
-    }
-}
-
 class Button : UIButton {
     
     convenience init(icon: String, font: UIFont = UIFont.systemFont(ofSize: 17.0), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.black) {
@@ -181,7 +172,7 @@ class Button : UIButton {
         self.clickHelper = clickHelper
     }
     
-    func performAction() {
+    @objc func performAction() {
         clickHelper?(self)
     }
 }

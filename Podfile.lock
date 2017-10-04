@@ -1,5 +1,30 @@
 PODS:
   - Alamofire (4.5.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FacebookShare (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.21)
+    - FBSDKShareKit (~> 4.21)
+  - FBSDKCoreKit (4.26.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.26.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.26.0):
+    - FBSDKCoreKit
   - lottie-ios (2.0.6)
   - Realm (2.10.0):
     - Realm/Headers (= 2.10.0)
@@ -12,6 +37,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare (from `https://github.com/1amageek/facebook-sdk-swift`)
   - lottie-ios
   - RealmSwift
   - SnapKit
@@ -19,17 +47,29 @@ DEPENDENCIES:
   - SwiftyJSON
 
 EXTERNAL SOURCES:
+  FacebookShare:
+    :git: https://github.com/1amageek/facebook-sdk-swift
   StreamView:
     :commit: 3cc6b1c3df76d709277a112fb1ad6a4630b0e556
     :git: https://github.com/Macostik/StreamView.git
 
 CHECKOUT OPTIONS:
+  FacebookShare:
+    :commit: 3ac76c770e9849285c380f380309d866911d2e93
+    :git: https://github.com/1amageek/facebook-sdk-swift
   StreamView:
     :commit: 3cc6b1c3df76d709277a112fb1ad6a4630b0e556
     :git: https://github.com/Macostik/StreamView.git
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FacebookShare: d086f7a4610bbbca9cec5e774de450a9b3e1a20b
+  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
+  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
+  FBSDKShareKit: 320712d8293fde6392872c91eb80ef0da5d73cc3
   lottie-ios: 601c75ad9b5f27857f6221c5e7f4a12d23f5e779
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
   RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
@@ -37,6 +77,6 @@ SPEC CHECKSUMS:
   StreamView: 4b98c6d7337a163feb16a8ac73cb6b4777afa96c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 5151aefd633551a21d73f187b7c73b2d93b7a87c
+PODFILE CHECKSUM: eeebb6eb4c669af257e24e3a0127f2d7271b5664
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

@@ -53,7 +53,7 @@ class TextView: UITextView {
         }
     }
     
-    final func textDidChange() {
+    @objc final func textDidChange() {
         updatePlaceholder()
     }
     

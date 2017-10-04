@@ -26,9 +26,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_opacity" translatesAutoresizingMaskIntoConstraints="NO" id="ayx-3I-T3j">
+                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_background" translatesAutoresizingMaskIntoConstraints="NO" id="gTI-ur-w0u">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djd-5Z-WN1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DKL-Hg-cLD">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3w-VV-7ED">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Qe3-nE-pDV">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n84-ha-c1j" userLabel="LogoView">
                                 <rect key="frame" x="137.5" y="44" width="100" height="141.5"/>
                                 <subviews>
@@ -203,6 +224,9 @@
                                 <state key="normal" title="Login with Facebook" backgroundImage="loginFacebookButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookLoginWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w1l-j7-CaD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.9251912264194444" green="0.98593225380000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -210,25 +234,29 @@
                             <constraint firstItem="WrZ-Xa-aWI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="05A-Bb-HVp"/>
                             <constraint firstItem="yx4-Hg-hwa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="26n-Or-ivh"/>
                             <constraint firstItem="WrZ-Xa-aWI" firstAttribute="top" secondItem="Ndm-pR-h6Z" secondAttribute="bottom" constant="20" id="3UD-gg-2Q2"/>
+                            <constraint firstAttribute="bottom" secondItem="djd-5Z-WN1" secondAttribute="bottom" id="8dI-Ag-IiA"/>
                             <constraint firstItem="Ndm-pR-h6Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="APH-oh-DgU"/>
                             <constraint firstAttribute="trailing" secondItem="WrZ-Xa-aWI" secondAttribute="trailing" constant="20" id="Brd-Vw-YhP"/>
+                            <constraint firstItem="djd-5Z-WN1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CmA-M0-9xY"/>
                             <constraint firstAttribute="trailing" secondItem="bw4-4U-DyX" secondAttribute="trailing" constant="40" id="JSL-8a-Jtf"/>
                             <constraint firstItem="MBQ-Dy-4RS" firstAttribute="bottom" secondItem="yx4-Hg-hwa" secondAttribute="top" constant="-20" id="Lyi-aN-q8N"/>
                             <constraint firstItem="yx4-Hg-hwa" firstAttribute="bottom" secondItem="LYU-YS-qYQ" secondAttribute="top" constant="-20" id="Oot-Hl-yih"/>
                             <constraint firstAttribute="trailing" secondItem="MBQ-Dy-4RS" secondAttribute="trailing" constant="40" id="RwI-Wd-p66"/>
+                            <constraint firstAttribute="trailing" secondItem="gTI-ur-w0u" secondAttribute="trailing" id="Vdm-zA-vch"/>
+                            <constraint firstItem="djd-5Z-WN1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xyn-0z-TGg"/>
                             <constraint firstItem="WrZ-Xa-aWI" firstAttribute="bottom" secondItem="MBQ-Dy-4RS" secondAttribute="top" constant="-20" id="alX-H8-bse"/>
                             <constraint firstItem="n84-ha-c1j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bnU-At-4Pu"/>
-                            <constraint firstAttribute="trailing" secondItem="ayx-3I-T3j" secondAttribute="trailing" id="dJ9-eW-hoO"/>
                             <constraint firstAttribute="trailing" secondItem="Ndm-pR-h6Z" secondAttribute="trailing" constant="20" id="eIt-PP-iy4"/>
                             <constraint firstItem="bw4-4U-DyX" firstAttribute="top" secondItem="LYU-YS-qYQ" secondAttribute="bottom" constant="20" id="eLB-CF-owy"/>
+                            <constraint firstItem="gTI-ur-w0u" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="evS-ij-qBQ"/>
+                            <constraint firstItem="gTI-ur-w0u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fi6-hf-0Yr"/>
                             <constraint firstAttribute="trailing" secondItem="LYU-YS-qYQ" secondAttribute="trailing" constant="40" id="gI9-5t-eHp"/>
+                            <constraint firstAttribute="trailing" secondItem="djd-5Z-WN1" secondAttribute="trailing" id="gI9-n9-KgF"/>
                             <constraint firstItem="MBQ-Dy-4RS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="im4-qi-8Kf"/>
                             <constraint firstItem="n84-ha-c1j" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="44" id="irT-XX-G28"/>
-                            <constraint firstItem="ayx-3I-T3j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="jZI-81-7lF"/>
-                            <constraint firstItem="ayx-3I-T3j" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mQD-KW-mQS"/>
                             <constraint firstItem="bw4-4U-DyX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="pna-5d-56g"/>
                             <constraint firstItem="Ndm-pR-h6Z" firstAttribute="top" secondItem="n84-ha-c1j" secondAttribute="bottom" constant="20" id="qLy-Ro-Ifk"/>
-                            <constraint firstAttribute="bottom" secondItem="ayx-3I-T3j" secondAttribute="bottom" id="vqx-1R-X4g"/>
+                            <constraint firstAttribute="bottom" secondItem="gTI-ur-w0u" secondAttribute="bottom" id="u9B-uC-Jt5"/>
                             <constraint firstItem="LYU-YS-qYQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="yJ4-Ia-ZdD"/>
                         </constraints>
                     </view>
@@ -239,9 +267,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background_opacity" width="750" height="1334"/>
         <image name="createAccButton" width="650" height="110"/>
         <image name="loginFacebookButton" width="652" height="112"/>
         <image name="logo" width="208" height="185"/>
+        <image name="logo_background" width="767" height="1022"/>
     </resources>
 </document>

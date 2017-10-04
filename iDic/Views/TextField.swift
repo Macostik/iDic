@@ -32,7 +32,7 @@ class TextField: UITextField {
         willSet {
             if let text = placeholder, let font = font, let color = newValue , !text.isEmpty {
                 attributedPlaceholder = NSMutableAttributedString(string: text, attributes:
-                    [NSForegroundColorAttributeName : color, NSFontAttributeName : font])
+                    [NSAttributedStringKey.foregroundColor : color, NSAttributedStringKey.font : font])
             }
         }
     }
@@ -85,6 +85,6 @@ class TextField: UITextField {
 extension NSAttributedString {
     
     var foregroundColor: UIColor? {
-        return attribute(NSForegroundColorAttributeName, at: 0, effectiveRange: nil) as? UIColor
+        return attribute(NSAttributedStringKey.foregroundColor, at: 0, effectiveRange: nil) as? UIColor
     }
 }
