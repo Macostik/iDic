@@ -33,8 +33,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     @IBAction func signInGoogle(sender: AnyObject) {
-        GIDSignIn.sharedInstance().clientID = "A202808522605-askgpbpnuh115ucicurcfl4e3j6qhsll.apps.googleusercontent.com"
-        
+        GIDSignIn.sharedInstance().clientID = "432215080080-rb1s29o1ftfvo47o1l7p3ooo8j14a9ve.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().signIn()
     }
     
