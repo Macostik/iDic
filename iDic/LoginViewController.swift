@@ -66,16 +66,5 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
               withError error: Error!) {
         print (">>self - \(error)<<")
     }
-    
-    func signIn(signIn: GIDSignIn!,
-                presentViewController viewController: UIViewController!) {
-        self.present(viewController, animated: true, completion: nil)
-    }
-    
-    // Dismiss the "Sign in with Google" view
-    func signIn(signIn: GIDSignIn!,
-                dismissViewController viewController: UIViewController!) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }
 
