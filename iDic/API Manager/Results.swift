@@ -18,6 +18,7 @@ enum UserStatus {
 enum ValidateResult {
     case validate
     case failure
+    case empty
 }
 
 extension ValidateResult {

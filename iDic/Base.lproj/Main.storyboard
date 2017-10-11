@@ -86,7 +86,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ndm-pR-h6Z" userLabel="EmailView">
-                                <rect key="frame" x="20" y="205.5" width="335" height="69"/>
+                                <rect key="frame" x="20" y="205.5" width="335" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chc-ft-owZ" customClass="Label" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="41" height="21"/>
@@ -96,17 +96,24 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3rY-fv-kdr" customClass="TextField" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="31" width="335" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.67825654759999998" green="0.98593225380000005" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="disableSeparator" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedStrokeColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-Ka-4xI">
-                                        <rect key="frame" x="0.0" y="68" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="53" width="335" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ITG-Ot-UIL"/>
@@ -119,7 +126,7 @@
                                     <constraint firstAttribute="trailing" secondItem="V9I-Ka-4xI" secondAttribute="trailing" id="6jX-gR-K7H"/>
                                     <constraint firstAttribute="bottom" secondItem="V9I-Ka-4xI" secondAttribute="bottom" id="CRk-pu-K1n"/>
                                     <constraint firstItem="chc-ft-owZ" firstAttribute="top" secondItem="Ndm-pR-h6Z" secondAttribute="top" id="OQ9-OF-Iqz"/>
-                                    <constraint firstItem="3rY-fv-kdr" firstAttribute="bottom" secondItem="V9I-Ka-4xI" secondAttribute="top" constant="-20" id="c2z-Ix-8xw"/>
+                                    <constraint firstItem="3rY-fv-kdr" firstAttribute="bottom" secondItem="V9I-Ka-4xI" secondAttribute="top" constant="-5" id="c2z-Ix-8xw"/>
                                     <constraint firstItem="3rY-fv-kdr" firstAttribute="top" secondItem="chc-ft-owZ" secondAttribute="bottom" constant="10" id="cZb-CE-7cu"/>
                                     <constraint firstItem="chc-ft-owZ" firstAttribute="leading" secondItem="Ndm-pR-h6Z" secondAttribute="leading" id="dGc-TX-WqC"/>
                                     <constraint firstAttribute="trailing" secondItem="3rY-fv-kdr" secondAttribute="trailing" id="dGq-Mm-A5j"/>
@@ -127,7 +134,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrZ-Xa-aWI" userLabel="PasswordlView">
-                                <rect key="frame" x="20" y="294.5" width="335" height="69"/>
+                                <rect key="frame" x="20" y="279.5" width="335" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HV1-5e-FiV" customClass="Label" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="74" height="21"/>
@@ -137,17 +144,24 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ijf-gQ-HqX" customClass="TextField" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="31" width="335" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.67825654759999998" green="0.98593225380000005" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="disableSeparator" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedStrokeColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTF-V7-fJu">
-                                        <rect key="frame" x="0.0" y="68" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="53" width="335" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="tgN-nP-54g"/>
@@ -162,13 +176,13 @@
                                     <constraint firstAttribute="trailing" secondItem="aTF-V7-fJu" secondAttribute="trailing" id="HPN-lI-BDy"/>
                                     <constraint firstAttribute="trailing" secondItem="Ijf-gQ-HqX" secondAttribute="trailing" id="Pjx-vA-RFd"/>
                                     <constraint firstItem="aTF-V7-fJu" firstAttribute="leading" secondItem="WrZ-Xa-aWI" secondAttribute="leading" id="Rlv-Vo-Kds"/>
-                                    <constraint firstItem="Ijf-gQ-HqX" firstAttribute="bottom" secondItem="aTF-V7-fJu" secondAttribute="top" constant="-20" id="TAO-Rb-0Px"/>
+                                    <constraint firstItem="Ijf-gQ-HqX" firstAttribute="bottom" secondItem="aTF-V7-fJu" secondAttribute="top" constant="-5" id="TAO-Rb-0Px"/>
                                     <constraint firstItem="Ijf-gQ-HqX" firstAttribute="top" secondItem="HV1-5e-FiV" secondAttribute="bottom" constant="10" id="Zap-9M-jgx"/>
                                     <constraint firstItem="HV1-5e-FiV" firstAttribute="leading" secondItem="WrZ-Xa-aWI" secondAttribute="leading" id="nvB-eW-p7X"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBQ-Dy-4RS" userLabel="CreateButton">
-                                <rect key="frame" x="40" y="383.5" width="295" height="60"/>
+                                <rect key="frame" x="40" y="353.5" width="295" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9UD-Qi-Ek8"/>
                                 </constraints>
@@ -178,7 +192,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-Hg-hwa">
-                                <rect key="frame" x="99" y="463.5" width="176" height="20.5"/>
+                                <rect key="frame" x="99" y="433.5" width="176" height="20.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ4-IH-a42" userLabel="FirstView">
                                         <rect key="frame" x="0.0" y="10" width="60" height="1"/>
@@ -216,7 +230,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYU-YS-qYQ" userLabel="GoogleButton">
-                                <rect key="frame" x="40" y="504" width="295" height="60"/>
+                                <rect key="frame" x="40" y="474" width="295" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="wh7-8R-zKR"/>
                                 </constraints>
@@ -229,7 +243,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bw4-4U-DyX" userLabel="FacebookButton">
-                                <rect key="frame" x="40" y="584" width="295" height="60"/>
+                                <rect key="frame" x="40" y="554" width="295" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ixJ-cc-L0E"/>
                                 </constraints>

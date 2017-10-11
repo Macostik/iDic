@@ -12,10 +12,20 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
+    @IBOutlet var emailTextView: TextView!
+    @IBOutlet var passwordTextView: TextView!
+    @IBOutlet var emailLabel: Label!
+    @IBOutlet var passwordLabel: Label!
+    
+    fileprivate lazy var userViewModel = {
+        return UserViewModel(self.emailTextView.rx.text.orEmpty.asDriver(), and: self.passwordTextView.rx.text.orEmpty.asDriver())
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
+        
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {
