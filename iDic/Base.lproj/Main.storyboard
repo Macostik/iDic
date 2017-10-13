@@ -287,6 +287,12 @@
                             <constraint firstItem="LYU-YS-qYQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="yJ4-Ia-ZdD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="chc-ft-owZ" id="c2b-no-pWS"/>
+                        <outlet property="emailTextField" destination="3rY-fv-kdr" id="0Xt-Ap-f3L"/>
+                        <outlet property="passwordLabel" destination="HV1-5e-FiV" id="DAg-qz-9fs"/>
+                        <outlet property="passwordTextField" destination="Ijf-gQ-HqX" id="kIy-31-ZXg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

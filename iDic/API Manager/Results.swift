@@ -28,6 +28,8 @@ extension ValidateResult {
             return UIColor.green
         case .failure:
             return UIColor.red
+        case .empty:
+            return UIColor.white.withAlphaComponent(0.7)
         }
     }
 }

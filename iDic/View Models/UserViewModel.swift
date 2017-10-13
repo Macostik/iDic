@@ -11,23 +11,23 @@ import RxSwift
 import RxCocoa
 
 class UserViewModel {
-    fileprivate let emailValidation: Driver<ValidateResult>?
-    fileprivate let passwordValidation: Driver<ValidateResult>?
+    let emailValidation: Driver<ValidateResult>
+    let passwordValidation: Driver<ValidateResult>
     
     init(_ email: Driver<String>, and password: Driver<String>) {
         emailValidation = email.flatMapLatest{ email in
-            guard email.isValidEmail else { return .failure }
-            return .validate
-        }.asDriver()
+            guard email.isValidEmail else { return .just(.failure) }
+            return .just(.validate)
+        }
         passwordValidation = password.flatMapLatest { password in
             let numberOfCharacters = password.characters.count
             if numberOfCharacters == 0 {
-                return .empty
+                return .just(.empty)
             } else if numberOfCharacters < 5 {
-                return .failure
+                return .just(.failure)
             }
-            return .validate
-        }
+            return .just(.validate)
+            }.asDriver()
         print (">>self - \(emailValidation), \(passwordValidation)<<")
     }
 }

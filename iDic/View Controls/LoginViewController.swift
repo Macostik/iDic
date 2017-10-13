@@ -9,23 +9,28 @@
 import UIKit
 import FacebookLogin
 import GoogleSignIn
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
-    @IBOutlet var emailTextView: TextView!
-    @IBOutlet var passwordTextView: TextView!
+    @IBOutlet var emailTextField: TextField!
+    @IBOutlet var passwordTextField: TextField!
     @IBOutlet var emailLabel: Label!
     @IBOutlet var passwordLabel: Label!
     
-    fileprivate lazy var userViewModel = {
-        return UserViewModel(self.emailTextView.rx.text.orEmpty.asDriver(), and: self.passwordTextView.rx.text.orEmpty.asDriver())
-    }()
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        let userViewModel = UserViewModel(self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""), and: self.passwordTextField.rx.text.orEmpty.asDriver())
+        
+        userViewModel.emailValidation.drive(emailLabel.rx.validatationResult)
+        userViewModel.passwordValidation.drive(passwordLabel.rx.validatationResult)
+        .disposed(by: disposeBag)
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {
@@ -68,13 +73,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
-            print (">>self - \(idToken)<<")
         }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
-        print (">>self - \(error)<<")
     }
 }
 
