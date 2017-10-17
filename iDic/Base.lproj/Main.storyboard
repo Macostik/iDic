@@ -146,7 +146,7 @@
                                         <rect key="frame" x="0.0" y="31" width="335" height="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                                 <color key="value" red="0.67825654759999998" green="0.98593225380000005" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,7 +181,7 @@
                                     <constraint firstItem="HV1-5e-FiV" firstAttribute="leading" secondItem="WrZ-Xa-aWI" secondAttribute="leading" id="nvB-eW-p7X"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBQ-Dy-4RS" userLabel="CreateButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBQ-Dy-4RS" userLabel="CreateButton" customClass="Button" customModule="iDic" customModuleProvider="target">
                                 <rect key="frame" x="40" y="353.5" width="295" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9UD-Qi-Ek8"/>
@@ -292,6 +292,7 @@
                         <outlet property="emailTextField" destination="3rY-fv-kdr" id="0Xt-Ap-f3L"/>
                         <outlet property="passwordLabel" destination="HV1-5e-FiV" id="DAg-qz-9fs"/>
                         <outlet property="passwordTextField" destination="Ijf-gQ-HqX" id="kIy-31-ZXg"/>
+                        <outlet property="siginButton" destination="MBQ-Dy-4RS" id="11d-bP-tPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

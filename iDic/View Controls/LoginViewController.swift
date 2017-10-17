@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     @IBOutlet var passwordTextField: TextField!
     @IBOutlet var emailLabel: Label!
     @IBOutlet var passwordLabel: Label!
+    @IBOutlet var siginButton: Button!
     
     var disposeBag = DisposeBag()
     
@@ -28,9 +29,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         let userViewModel = UserViewModel(self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""), and: self.passwordTextField.rx.text.orEmpty.asDriver())
         
-        userViewModel.emailValidation.drive(emailLabel.rx.validatationResult)
-        userViewModel.passwordValidation.drive(passwordLabel.rx.validatationResult)
-        .disposed(by: disposeBag)
+        userViewModel.emailValidation
+            .drive(emailLabel.rx.validatationResult)
+            .disposed(by: disposeBag)
+        userViewModel.passwordValidation
+            .drive(passwordLabel.rx.validatationResult)
+            .disposed(by: disposeBag)
+        userViewModel.isAllow.drive(onNext: { [weak self] isValid in
+            self?.siginButton.active = isValid
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {

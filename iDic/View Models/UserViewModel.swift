@@ -13,6 +13,7 @@ import RxCocoa
 class UserViewModel {
     let emailValidation: Driver<ValidateResult>
     let passwordValidation: Driver<ValidateResult>
+    let isAllow: Driver<Bool>
     
     init(_ email: Driver<String>, and password: Driver<String>) {
         emailValidation = email.flatMapLatest{ email in
@@ -28,6 +29,8 @@ class UserViewModel {
             }
             return .just(.validate)
             }.asDriver()
-        print (">>self - \(emailValidation), \(passwordValidation)<<")
+        isAllow = Driver.combineLatest(emailValidation, passwordValidation) { email, password in
+            email.isValid && password.isValid
+        }.distinctUntilChanged()
     }
 }
