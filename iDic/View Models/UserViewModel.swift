@@ -14,8 +14,9 @@ class UserViewModel {
     let emailValidation: Driver<ValidateResult>
     let passwordValidation: Driver<ValidateResult>
     let isAllow: Driver<Bool>
+    let signin: Driver<Bool>
     
-    init(_ email: Driver<String>, and password: Driver<String>) {
+    init(email: Driver<String>, password: Driver<String>, loginTap: Driver<Void>) {
         emailValidation = email.flatMapLatest{ email in
             guard email.isValidEmail else { return .just(.failure) }
             return .just(.validate)
@@ -32,5 +33,13 @@ class UserViewModel {
         isAllow = Driver.combineLatest(emailValidation, passwordValidation) { email, password in
             email.isValid && password.isValid
         }.distinctUntilChanged()
+        let permition = Driver.combineLatest(email, password).map {($0, $1)}
+        signin = loginTap.withLatestFrom(permition)
+            .flatMapLatest{ (email, password) in
+                return APIManager.shared.signup(email, password: password)
+                    .asDriver(onErrorJustReturn: false)
+        }
     }
+    
+    
 }

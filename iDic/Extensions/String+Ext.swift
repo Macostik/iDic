@@ -118,6 +118,10 @@ extension String {
         return Double.init(self as String) ?? Double.infinity
     }
     
+    var urlEscaped: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+    }
+    
 //    func subString(_ from: Int, offset: String.IndexDistance) -> String {
 //        return substring(with: Range(uncheckedBounds: (self.character.startIndex, index(self.character.startIndex, offsetBy: offset))))
     //

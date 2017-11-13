@@ -10,7 +10,7 @@ target 'iDic' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare', :git => 'https://github.com/1amageek/facebook-sdk-swift'
-  pod 'Alamofire'
+  pod 'RxAlamofire'
   pod 'SnapKit', '~> 3.2.0'
   pod 'RxSwift', '~> 3.0'
   pod 'RxCocoa', '~> 3.0'

@@ -20,6 +20,7 @@
 		5679BF981F7C428C00587F2E /* UIBezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF931F7C3CB300587F2E /* UIBezierPath+Ext.swift */; };
 		5679BF991F7C428C00587F2E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF941F7C3D2A00587F2E /* UIView+Ext.swift */; };
 		5679BF9A1F7C428C00587F2E /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF951F7C3D5300587F2E /* String+Ext.swift */; };
+		56A7FA701F97E95700310E43 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7FA6F1F97E95700310E43 /* APIManager.swift */; };
 		56EB71E81E9AC21D00BA1A8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB71E71E9AC21D00BA1A8C /* AppDelegate.swift */; };
 		56EB71EA1E9AC21D00BA1A8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */; };
 		56EB71ED1E9AC21D00BA1A8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EB71EB1E9AC21D00BA1A8C /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		5679BF941F7C3D2A00587F2E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5679BF951F7C3D5300587F2E /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		567EC06A1F856E910092490C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		56A7FA6F1F97E95700310E43 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		56EB71E41E9AC21D00BA1A8C /* iDic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EB71E71E9AC21D00BA1A8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				562D70F81F8D5A88001D4BE2 /* Results.swift */,
+				56A7FA6F1F97E95700310E43 /* APIManager.swift */,
 			);
 			path = "API Manager";
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -477,6 +481,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -495,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A7FA701F97E95700310E43 /* APIManager.swift in Sources */,
 				5625A38A1F7C303D00753525 /* TextField.swift in Sources */,
 				5625A38D1F7C304700753525 /* Button.swift in Sources */,
 				5679BF991F7C428C00587F2E /* UIView+Ext.swift in Sources */,

@@ -94,11 +94,12 @@
                                         <color key="textColor" white="1" alpha="0.69828232020547942" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3rY-fv-kdr" customClass="TextField" customModule="iDic" customModuleProvider="target">
+                                    <textField opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3rY-fv-kdr" customClass="TextField" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="31" width="335" height="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
                                                 <color key="value" red="0.67825654759999998" green="0.98593225380000005" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -144,6 +145,7 @@
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ijf-gQ-HqX" customClass="TextField" customModule="iDic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="31" width="335" height="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -292,7 +294,7 @@
                         <outlet property="emailTextField" destination="3rY-fv-kdr" id="0Xt-Ap-f3L"/>
                         <outlet property="passwordLabel" destination="HV1-5e-FiV" id="DAg-qz-9fs"/>
                         <outlet property="passwordTextField" destination="Ijf-gQ-HqX" id="kIy-31-ZXg"/>
-                        <outlet property="siginButton" destination="MBQ-Dy-4RS" id="11d-bP-tPQ"/>
+                        <outlet property="signinButton" destination="MBQ-Dy-4RS" id="xhV-yL-gGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
