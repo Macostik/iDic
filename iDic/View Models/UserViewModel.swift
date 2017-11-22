@@ -35,9 +35,12 @@ class UserViewModel {
         }.distinctUntilChanged()
         let permition = Driver.combineLatest(email, password).map {($0, $1)}
         signin = loginTap.withLatestFrom(permition)
-            .flatMapLatest{ (email, password) in
-                return APIManager.shared.signup(email, password: password)
-                    .asDriver(onErrorJustReturn: false)
+            .flatMapLatest { email, password in
+                APIManager.shared.signup(email, password: password, completion: { driver in
+                     driver.asDriver(onErrorJustReturn: false)
+                })
+                return Driver.just(true)
+                
         }
     }
     
