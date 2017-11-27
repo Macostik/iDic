@@ -16,16 +16,24 @@ class APIManager {
     var disposeBag = DisposeBag()
     static let shared = APIManager()
     
-    func signup(_ email: String, password: String, completion: @escaping ((Observable<Bool>) -> Void)) {
+    func signup(_ email: String, password: String) -> Observable<Bool> {
         let url = URL(string: "https://idic.herokuapp.com/api/auth/register")!
         let parameters = [  "email" : email,
                             "name" : "Yuriy",
                             "password" : password  ]
-        RxAlamofire.requestJSON(.post, url, parameters: parameters)
-            .debug()
-            .subscribe(onNext: { _, json in
-                print (">>self - \(json)<<")
-                completion(Observable.just(true))
-            }).disposed(by: disposeBag)
+        return request(.post, url: url, parameters: parameters)
     }
+    
+    fileprivate func request(_ method: Alamofire.HTTPMethod,
+                             url: URLConvertible, parameters:[String: Any]? = nil,
+                             encoding: ParameterEncoding = URLEncoding.default,
+                             headers: [String: String]? = nil) -> Observable<Bool> {
+        return RxAlamofire.requestJSON(.post, url, parameters: parameters)
+            .debug()
+            .flatMap({ _, _ -> Observable<Bool> in
+                return Observable.just(true)
+            })
+    }
+    
 }
+
