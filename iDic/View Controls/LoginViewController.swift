@@ -30,7 +30,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         let userViewModel = UserViewModel(
             email: self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""),
             password: self.passwordTextField.rx.text.orEmpty.asDriver(),
-            loginTap: self.signinButton.rx.tap.asDriver())
+            loginTap: self.signinButton.rx.tap.asDriver().do(onNext: { [weak self] in
+                self?.signinButton.loading = true
+        }))
         
         userViewModel.emailValidation
             .drive(emailLabel.rx.validatationResult)
@@ -41,9 +43,12 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         userViewModel.isAllow.drive(onNext: { [weak self] isValid in
             self?.signinButton.active = isValid
         }).disposed(by: disposeBag)
-        userViewModel.signin.drive(onNext: { user in
+        userViewModel.signin
+            .drive(onNext: { [weak self] user in
                 print("User signed in \(user)")
-            }).disposed(by: disposeBag)
+                self?.signinButton.loading = false
+            })
+            .disposed(by: disposeBag)
     }
     
     @IBAction func facebookLogin(sender: AnyObject) {

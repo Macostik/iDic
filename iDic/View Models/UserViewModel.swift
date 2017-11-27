@@ -22,7 +22,7 @@ class UserViewModel {
             return .just(.validate)
         }
         passwordValidation = password.flatMapLatest { password in
-            let numberOfCharacters = password.characters.count
+            let numberOfCharacters = password.count
             if numberOfCharacters == 0 {
                 return .just(.empty)
             } else if numberOfCharacters < 5 {

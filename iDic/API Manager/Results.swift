@@ -52,3 +52,11 @@ extension Reactive where Base: Label {
         })
     }
 }
+
+extension Reactive where Base: Button {
+    var loading: UIBindingObserver<Base, Bool> {
+        return UIBindingObserver(UIElement: base, binding: { button, loading in
+            button.loading = loading
+        })
+    }
+}

@@ -35,7 +35,7 @@ class APIManager {
                 return Observable.never()
             }
             .responseJSON()
-            .flatMapLatest{ response ->Observable<UserStatus> in
+            .flatMapLatest{ response -> Observable<UserStatus> in
                 print (">>self - \(response.timeline)<<")
                 guard response.error == nil else { return Observable.just(.unavailable) }
                 return Observable.just(.authorized(User()))
