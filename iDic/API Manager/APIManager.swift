@@ -16,7 +16,7 @@ class APIManager {
     var disposeBag = DisposeBag()
     static let shared = APIManager()
     
-    func signup(_ email: String, password: String) -> Observable<Bool> {
+    func signup(_ email: String, password: String) -> Observable<UserStatus> {
         let url = URL(string: "https://idic.herokuapp.com/api/auth/register")!
         let parameters = [  "email" : email,
                             "name" : "Yuriy",
@@ -27,13 +27,19 @@ class APIManager {
     fileprivate func request(_ method: Alamofire.HTTPMethod,
                              url: URLConvertible, parameters:[String: Any]? = nil,
                              encoding: ParameterEncoding = URLEncoding.default,
-                             headers: [String: String]? = nil) -> Observable<Bool> {
-        return RxAlamofire.requestJSON(.post, url, parameters: parameters)
-            .debug()
-            .flatMap({ _, _ -> Observable<Bool> in
-                return Observable.just(true)
-            })
+                             headers: [String: String]? = nil) -> Observable<UserStatus> {
+        return RxAlamofire.request(.post, url, parameters: parameters)
+//            .debug()
+            .catchError { error in
+                print (">>self - \(error)<<")
+                return Observable.never()
+            }
+            .responseJSON()
+            .flatMapLatest{ response ->Observable<UserStatus> in
+                print (">>self - \(response.timeline)<<")
+                guard response.error == nil else { return Observable.just(.unavailable) }
+                return Observable.just(.authorized(User()))
+        }
     }
-    
 }
 

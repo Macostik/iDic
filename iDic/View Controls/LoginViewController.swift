@@ -41,8 +41,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         userViewModel.isAllow.drive(onNext: { [weak self] isValid in
             self?.signinButton.active = isValid
         }).disposed(by: disposeBag)
-        userViewModel.signin.drive(onNext: { signedIn in
-                print("User signed in \(signedIn)")
+        userViewModel.signin.drive(onNext: { user in
+                print("User signed in \(user)")
             }).disposed(by: disposeBag)
     }
     
