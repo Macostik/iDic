@@ -14,6 +14,7 @@ target 'iDic' do
   pod 'SnapKit', '~> 3.2.0'
   pod 'RxSwift', '~> 3.0'
   pod 'RxCocoa', '~> 3.0'
+  pod 'Reachability', '3.2.0'
   pod 'lottie-ios'
   pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git', :commit => '3cc6b1c3df76d709277a112fb1ad6a4630b0e556'
   post_install do |installer|

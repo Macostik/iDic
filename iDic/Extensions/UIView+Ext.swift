@@ -82,12 +82,12 @@ extension UIView {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
-    func add<T: UIView>(subview: T) -> T {
+    @discardableResult func add<T: UIView>(_ subview: T) -> T {
         addSubview(subview)
         return subview
     }
     
-    func add<T: UIView>(subview: T, _ layout: ((ConstraintMaker) -> Void)) -> T {
+    @discardableResult func add<T: UIView>(_ subview: T, _ layout: (_ make: ConstraintMaker) -> Void) -> T {
         addSubview(subview)
         subview.snp.makeConstraints(layout)
         return subview

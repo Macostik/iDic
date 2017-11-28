@@ -11,6 +11,8 @@ import FacebookLogin
 import GoogleSignIn
 import RxSwift
 import RxCocoa
+import Lottie
+import SnapKit
 
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
@@ -27,6 +29,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        
         let userViewModel = UserViewModel(
             email: self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""),
             password: self.passwordTextField.rx.text.orEmpty.asDriver(),
@@ -42,6 +45,15 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             .disposed(by: disposeBag)
         userViewModel.isAllow.drive(onNext: { [weak self] isValid in
             self?.signinButton.active = isValid
+        }).disposed(by: disposeBag)
+        userViewModel.reachable.drive(onNext: { [weak self] animate in
+            self?.view.add(specify(LOTAnimationView(name: "no_internet_connection"), {
+                $0.play()
+                $0.loopAnimation = true
+            }), {
+                $0.top.trailing.equalTo((self?.view ?? UIView())).inset(10)
+                $0.size.equalTo(60)
+            })
         }).disposed(by: disposeBag)
         userViewModel.signin
             .drive(onNext: { [weak self] user in
