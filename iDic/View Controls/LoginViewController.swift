@@ -28,7 +28,6 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-        Logger.log("My first log!", color: .green)
         
         let userViewModel = UserViewModel(
             email: self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""),

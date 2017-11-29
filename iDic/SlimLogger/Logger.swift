@@ -28,9 +28,9 @@ struct Logger {
     enum LogColor: String {
         case `default` = "fg255,255,255;"
         case yellow = "fg219,219,110;"
-        case green = "fg107,190,31;"
+        case green = "fg96,255,209;"
         case red = "fg201,91,91;"
-        case blue = "fg0,204,204;"
+        case blue = "fg0,151,210;"
         case orange = "fg234,117,69;"
     }
     
