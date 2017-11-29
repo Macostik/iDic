@@ -14,7 +14,7 @@ import RxCocoa
 import Lottie
 import SnapKit
 
-class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
+class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     @IBOutlet var emailTextField: TextField!
     @IBOutlet var passwordTextField: TextField!
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-        
+        Logger.log("My first log!", color: .green)
         
         let userViewModel = UserViewModel(
             email: self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""),
