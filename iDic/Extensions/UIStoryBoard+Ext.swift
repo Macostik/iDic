@@ -40,9 +40,9 @@ extension UIStoryboard {
 }
 
 extension UIWindow {
-    @nonobjc static let mainWindow = UIApplication.shared.windows.first ?? UIWindow(frame: UIScreen.main.bounds)
+    @nonobjc static let mainWindow = UIApplication.shared.windows.first ??
+        UIWindow(frame: UIScreen.main.bounds)
 }
-
 
 extension UINavigationController {
     
@@ -63,4 +63,3 @@ extension UINavigationController {
 struct Storyboard {
     static let LoginViewController = StoryboardObject<LoginViewController>("LoginViewController")
 }
-

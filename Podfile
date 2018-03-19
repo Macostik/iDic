@@ -18,6 +18,7 @@ target 'iDic' do
   pod 'lottie-ios'
   pod 'SwiftLint'
   pod 'SwiftyJSON'
+  pod 'Socket.IO-Client-Swift', '~> 13.1.0'
   pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git'
   post_install do |installer|
       installer.pods_project.targets.each do |target|

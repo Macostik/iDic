@@ -52,19 +52,29 @@ extension String {
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    fileprivate static let emailRegex = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+    fileprivate static let emailRegex = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&" +
+    "'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|" +
+    "\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]" +
+    "(?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4]" +
+    "[0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-" +
+    "\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
     
     var isValidEmail: Bool {
-        guard let predicate = try? NSRegularExpression(pattern: String.emailRegex, options:[]) else { return false }
-        return predicate.firstMatch(in: self, options: [], range: NSMakeRange(0, characters.count - 1)) != nil
+        guard let predicate = try? NSRegularExpression(pattern: String.emailRegex,
+                                                       options:[]) else { return false }
+        return predicate.firstMatch(in: self,
+                                    options: [],
+                                    range: NSMakeRange(0, count - 1)) != nil
     }
     
     var isValidPhone: Bool {
         guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue) else { return false }
         
-        if let match = detector.matches(in: self as String, options: [], range: NSMakeRange(0, (self as String).characters.count)).first?.phoneNumber {
+        if let match = detector.matches(in: self as String,
+                                        options: [],
+                                        range: NSMakeRange(0, (self as String).count)).first?.phoneNumber {
             return match == self as String
-        }else{
+        } else {
             return false
         }
     }
@@ -84,10 +94,9 @@ extension String {
         return parameters
     }
     
-
     func clearPhoneNumber() -> String {
         var phone = ""
-        for character in (self as String).characters {
+        for character in (self as String) {
             if character == "+" || "0"..."9" ~= character {
                 phone.append(character)
             }
@@ -106,8 +115,8 @@ extension String {
         var result = ""
         
         for _ in 0..<length {
-            let randomIndex = Int(arc4random_uniform(UInt32(characters.characters.count)))
-            let characterIndex = characters.index(characters.startIndex, offsetBy: randomIndex)
+            let randomIndex = Int(arc4random_uniform(UInt32(characters.count)))
+            let characterIndex = index(startIndex, offsetBy: randomIndex)
             result += String(characters[characterIndex])
         }
         
@@ -122,15 +131,16 @@ extension String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
     }
     
-//    func subString(_ from: Int, offset: String.IndexDistance) -> String {
-//        return substring(with: Range(uncheckedBounds: (self.character.startIndex, index(self.character.startIndex, offsetBy: offset))))
-    //
+    func subString(_ from: Int, offset: String.IndexDistance) -> String {
+        return String(self[startIndex ..< index(startIndex, offsetBy: offset)])
+    }
     
-//}func heightWithFont(_ font: UIFont, width: CGFloat) -> CGFloat {
-    //        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-    //        let height = boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil).height
-    //        return ceil(height)
-    //    }
+    func heightWithFont(_ font: UIFont, width: CGFloat) -> CGFloat {
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let height = self.boundingRect(with: size,
+                                       options: .usesLineFragmentOrigin,
+                                       attributes: [.font : font],
+                                       context: nil).height
+        return ceil(height)
+    }
 }
-
-

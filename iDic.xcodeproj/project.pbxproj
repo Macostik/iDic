@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5613439E20606047009DA4FD /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613439D20606047009DA4FD /* SocketManager.swift */; };
 		5625A38A1F7C303D00753525 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3861F7C2FF300753525 /* TextField.swift */; };
 		5625A38B1F7C304100753525 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3871F7C2FFF00753525 /* TextView.swift */; };
 		5625A38C1F7C304400753525 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3881F7C300800753525 /* Label.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		25C8ECBE013F8C70D8FC2BC5 /* Pods-iDic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDic.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDic/Pods-iDic.release.xcconfig"; sourceTree = "<group>"; };
+		5613439D20606047009DA4FD /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		5625A3791F7AD7DB00753525 /* iDic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDic.entitlements; sourceTree = "<group>"; };
 		5625A3821F7AF10D00753525 /* launch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = launch.json; sourceTree = "<group>"; };
 		5625A3831F7C2F5000753525 /* success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5613439C2060601F009DA4FD /* SocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				5613439D20606047009DA4FD /* SocketManager.swift */,
+			);
+			path = SocketManager;
+			sourceTree = "<group>";
+		};
 		5625A37B1F7AE3E500753525 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +256,7 @@
 				5625A37F1F7AEA1C00753525 /* Extensions */,
 				5625A37B1F7AE3E500753525 /* Resource */,
 				567AD10A1FCEA08D00712A0A /* SlimLogger */,
+				5613439C2060601F009DA4FD /* SocketManager */,
 				5625A3791F7AD7DB00753525 /* iDic.entitlements */,
 				56EB71EE1E9AC21D00BA1A8C /* Assets.xcassets */,
 				56331CF61FCDFB010050AB26 /* Main.storyboard */,
@@ -512,6 +523,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/StreamView/StreamView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
@@ -536,6 +549,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
@@ -562,6 +577,7 @@
 				5679BF991F7C428C00587F2E /* UIView+Ext.swift in Sources */,
 				5625A38B1F7C304100753525 /* TextView.swift in Sources */,
 				56EB71EA1E9AC21D00BA1A8C /* LoginViewController.swift in Sources */,
+				5613439E20606047009DA4FD /* SocketManager.swift in Sources */,
 				567AD1101FCEA0A400712A0A /* SlimLogglyDestinationConfig.swift in Sources */,
 				567AD1111FCEA0A400712A0A /* SlimLoggerConfig.swift in Sources */,
 				5679BF981F7C428C00587F2E /* UIBezierPath+Ext.swift in Sources */,

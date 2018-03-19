@@ -23,4 +23,3 @@ extension Results {
         }
     }
 }
-

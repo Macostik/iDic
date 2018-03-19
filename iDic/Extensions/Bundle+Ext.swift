@@ -11,7 +11,7 @@ import UIKit
 
 extension Bundle {
     
-    func plist(name: String) -> URL?  {
+    func plist(name: String) -> URL? {
         return url(forResource: name, withExtension: "plist")
     }
     
@@ -32,7 +32,7 @@ extension Dictionary {
     
     static func plist(name: String) -> Dictionary? {
         guard let path = Bundle.main.plist(name: name), let data = try? Data(contentsOf: path),
-              let hashTable = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? Dictionary<Key, Value> else { return nil }
+            let hashTable = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [Key: Value] else { return nil }
         return hashTable
     }
 }
