@@ -18,7 +18,7 @@ public enum LogLevel: Int {
     case warn   = 400
     case error  = 500
     case fatal  = 600
-
+    
     var string:String {
         switch self {
         case .trace:
@@ -35,63 +35,72 @@ public enum LogLevel: Int {
             return "FATAL"
         }
     }
-
+    
 }
 
 public protocol LogDestination {
-    func log<T>(_ message: @autoclosure () -> T, level:LogLevel,
-        filename: String, line: Int)
+    func log<T>(_ message: @autoclosure () -> T,
+                level:LogLevel,
+                filename: String,
+                line: Int)
 }
 
 private let slim = Slim()
 
 open class Slim {
-
+    
     var logDestinations: [LogDestination] = []
     var cleanedFilenamesCache:NSCache = NSCache<NSString, AnyObject>()
-
+    
     init() {
         if SlimConfig.enableConsoleLogging {
             logDestinations.append(ConsoleDestination())
         }
     }
-
+    
     open class func addLogDestination(_ destination: LogDestination) {
         slim.logDestinations.append(destination)
     }
-
+    
     open class func trace<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                             filename: String = #file,
+                             line: Int = #line) {
         slim.logInternal(message, level: LogLevel.trace, filename: filename, line: line)
     }
-
+    
     open class func debug<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                             filename: String = #file,
+                             line: Int = #line) {
         slim.logInternal(message, level: LogLevel.debug, filename: filename, line: line)
     }
-
+    
     open class func info<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                            filename: String = #file,
+                            line: Int = #line) {
         slim.logInternal(message, level: LogLevel.info, filename: filename, line: line)
     }
-
+    
     open class func warn<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                            filename: String = #file,
+                            line: Int = #line) {
         slim.logInternal(message, level: LogLevel.warn, filename: filename, line: line)
     }
-
+    
     open class func error<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                             filename: String = #file,
+                             line: Int = #line) {
         slim.logInternal(message, level: LogLevel.error, filename: filename, line: line)
     }
-
+    
     open class func fatal<T>(_ message: @autoclosure () -> T,
-        filename: String = #file, line: Int = #line) {
+                             filename: String = #file,
+                             line: Int = #line) {
         slim.logInternal(message, level: LogLevel.fatal, filename: filename, line: line)
     }
-
+    
     fileprivate func logInternal<T>(_ message: @autoclosure () -> T, level:LogLevel,
-        filename: String, line: Int) {
+                                    filename: String,
+                                    line: Int) {
         let cleanedfile = cleanedFilename(filename)
         if isSourceFileEnabled(cleanedfile) {
             for dest in logDestinations {
@@ -99,55 +108,56 @@ open class Slim {
             }
         }
     }
-
+    
     fileprivate func cleanedFilename(_ filename:String) -> String {
         if let cleanedfile: String = cleanedFilenamesCache.object(forKey: filename as NSString) as? String {
             return cleanedfile
         } else {
             var retval = ""
-            let items = filename.split(omittingEmptySubsequences: true, whereSeparator:{$0=="/"}).map { String($0) }
-            if items.count > 0 {
+            let items = filename.split(omittingEmptySubsequences: true,
+                                       whereSeparator: { $0 == "/" }).map { String($0) }
+            if !items.isEmpty {
                 retval = items.last!
             }
             cleanedFilenamesCache.setObject(retval as AnyObject, forKey: filename as NSString)
             return retval
         }
     }
-
+    
     fileprivate func isSourceFileEnabled(_ cleanedFile:String) -> Bool {
         switch SlimConfig.sourceFilesThatShouldLog {
-            case .all:
+        case .all:
+            return true
+        case .none:
+            return false
+        case .enabledSourceFiles(let enabledFiles):
+            if enabledFiles.contains(cleanedFile) {
                 return true
-            case .none:
+            } else {
                 return false
-            case .enabledSourceFiles(let enabledFiles):
-                if enabledFiles.contains(cleanedFile) {
-                    return true
-                } else {
-                    return false
-                }
-        }
-    }
-}
-
-class ConsoleDestination: LogDestination {
-
-    let dateFormatter = DateFormatter()
-    let serialLogQueue = DispatchQueue(label: "ConsoleDestinationQueue", attributes: [])
-
-    init() {
-        dateFormatter.dateFormat = "HH:mm:ss:SSS"
-    }
-
-
-    func log<T>(_ message: @autoclosure () -> T, level:LogLevel,
-        filename: String, line: Int) {
-        if level.rawValue >= SlimConfig.consoleLogLevel.rawValue {
-            let msg = message()
-            self.serialLogQueue.async {
-                print("\(self.dateFormatter.string(from: Date())):\(level.string):\(filename):\(line) - \(msg)")
             }
         }
     }
 }
 
+class ConsoleDestination: LogDestination {
+    
+    let dateFormatter = DateFormatter()
+    let serialLogQueue = DispatchQueue(label: "ConsoleDestinationQueue", attributes: [])
+    
+    init() {
+        dateFormatter.dateFormat = "HH:mm:ss:SSS"
+    }
+    
+    func log<T>(_ message: @autoclosure () -> T, level:LogLevel,
+                filename: String,
+                line: Int) {
+        if level.rawValue >= SlimConfig.consoleLogLevel.rawValue {
+            let msg = message()
+            self.serialLogQueue.async {
+                print("\(self.dateFormatter.string(from: Date())):\(level.string):" +
+                    "\(filename):\(line) - \(msg)")
+            }
+        }
+    }
+}

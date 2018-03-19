@@ -30,7 +30,8 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
         GIDSignIn.sharedInstance().uiDelegate = self
         
         let userViewModel = UserViewModel(
-            email: self.emailTextField.rx.text.orEmpty.filter({ $0.count > 0 }).asDriver(onErrorJustReturn: ""),
+            email: self.emailTextField.rx.text.orEmpty.filter({ !$0.isEmpty })
+                .asDriver(onErrorJustReturn: ""),
             password: self.passwordTextField.rx.text.orEmpty.asDriver(),
             loginTap: self.signinButton.rx.tap.asDriver().do(onNext: { [weak self] in
                 self?.signinButton.loading = true
@@ -45,7 +46,7 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
         userViewModel.isAllow.drive(onNext: { [weak self] isValid in
             self?.signinButton.active = isValid
         }).disposed(by: disposeBag)
-        userViewModel.reachable.drive(onNext: { [weak self] animate in
+        userViewModel.reachable.drive(onNext: { [weak self] _ in
             self?.view.add(specify(LOTAnimationView(name: "no_internet_connection"), {
                 $0.play()
                 $0.loopAnimation = true
@@ -70,14 +71,15 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success:
                 print("Logged in!")
             }
         }
     }
     
     @IBAction func signInGoogle(sender: AnyObject) {
-        GIDSignIn.sharedInstance().clientID = "432215080080-rb1s29o1ftfvo47o1l7p3ooo8j14a9ve.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "432215080080-" +
+        "rb1s29o1ftfvo47o1l7p3ooo8j14a9ve.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().signIn()
     }
@@ -96,12 +98,12 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: nil)
         } else {
-            let userId = user.userID
-            let idToken = user.authentication.idToken
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
+            _ = user.userID
+            _ = user.authentication.idToken
+            _ = user.profile.name
+            _ = user.profile.givenName
+            _ = user.profile.familyName
+            _ = user.profile.email
         }
     }
     
@@ -109,4 +111,3 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
               withError error: Error!) {
     }
 }
-

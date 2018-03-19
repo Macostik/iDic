@@ -16,7 +16,9 @@ target 'iDic' do
   pod 'RxCocoa', '~> 3.0'
   pod 'Reachability', '3.2.0'
   pod 'lottie-ios'
-  pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git', :commit => '3cc6b1c3df76d709277a112fb1ad6a4630b0e556'
+  pod 'SwiftLint'
+  pod 'SwiftyJSON'
+  pod 'StreamView', :git => 'https://github.com/Macostik/StreamView.git'
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|

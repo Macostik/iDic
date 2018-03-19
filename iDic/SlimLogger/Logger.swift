@@ -36,20 +36,27 @@ struct Logger {
     
     fileprivate static let Escape = "\u{001b}["
     
-    static func debugLog(_ string: @autoclosure () -> String, color: LogColor = .default, filename: String = #file, line: Int = #line) {
+    static func debugLog(_ string: @autoclosure () -> String,
+                         color: LogColor = .default,
+                         filename: String = #file,
+                         line: Int = #line) {
         #if DEBUG
-            Slim.debug("\(Escape)\(color.rawValue)\n\(string())\n\n\(Escape);", filename: filename, line: line)
+            Slim.debug("\(Escape)\(color.rawValue)\n\(string())\n\n\(Escape);",
+                filename: filename,
+                line: line)
         #endif
     }
     
-    static func log<T>(_ message: @autoclosure () -> T, color: LogColor = .default, filename: String = #file, line: Int = #line) {
+    static func log<T>(_ message: @autoclosure () -> T,
+                       color: LogColor = .default,
+                       filename: String = #file,
+                       line: Int = #line) {
         #if DEBUG
-            Slim.debug("\(Escape)\(color.rawValue)\n\(message())\n\n\(Escape);", filename: filename, line: line)
+            Slim.debug("\(Escape)\(color.rawValue)\n\(message())\n\n\(Escape);",
+                filename: filename,
+                line: line)
         #else
             Slim.info(message, filename: filename, line: line)
         #endif
     }
 }
-
-
-

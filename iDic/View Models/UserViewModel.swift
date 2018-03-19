@@ -17,9 +17,8 @@ class UserViewModel {
     let isAllow: Driver<Bool>
     let signin: Driver<Any>
     let reachable: Driver<Bool>
-    
     init(email: Driver<String>, password: Driver<String>, loginTap: Driver<Void>) {
-        emailValidation = email.flatMapLatest{ email in
+        emailValidation = email.flatMapLatest { email in
             guard email.isValidEmail else { return .just(.failure) }
             return .just(.validate)
         }
@@ -33,8 +32,8 @@ class UserViewModel {
             return .just(.validate)
             }.asDriver()
         reachable = Reachability.rx.reachable.asDriver(onErrorJustReturn: true)
-        isAllow = Driver.combineLatest(emailValidation, passwordValidation, reachable) { email, password, reachable in
-            email.isValid && password.isValid && reachable
+        isAllow = Driver.combineLatest(emailValidation, passwordValidation, reachable) {
+            $0.isValid && $1.isValid && $2
         }.distinctUntilChanged()
         let permition = Driver.combineLatest(email, password).map {($0, $1)}
         signin = loginTap.withLatestFrom(permition)

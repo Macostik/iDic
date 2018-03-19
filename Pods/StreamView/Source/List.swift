@@ -10,7 +10,7 @@ import Foundation
 
 public class List<T: Equatable> {
     
-    public var sorter: (_ lhs: T, _ rhs: T) -> Bool = { _ in return true }
+    public var sorter: (_ lhs: T, _ rhs: T) -> Bool = { _,_  in return true }
     
     convenience public init(sorter: @escaping (_ lhs: T, _ rhs: T) -> Bool) {
         self.init()

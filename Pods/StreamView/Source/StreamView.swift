@@ -13,6 +13,10 @@ enum ScrollDirection {
     case Unknown, Up, Down
 }
 
+public enum PositionScroll {
+    case top, middle, bottom
+}
+
 typealias ScrollDirectionHandler = (_ isUp: Bool) -> ()
 
 var StreamViewCommonLocksChanged: String = "StreamViewCommonLocksChanged"
@@ -97,7 +101,7 @@ public class StreamView: UIScrollView {
     }
     
     private func setup() {
-        (layer as! StreamViewLayer).didChangeBounds = { [unowned self] _ in
+        (layer as! StreamViewLayer).didChangeBounds = { [unowned self] in
             self.didChangeBounds()
         }
         NotificationCenter.default.addObserver(self, selector: #selector(StreamView.locksChanged), name: NSNotification.Name(rawValue: StreamViewCommonLocksChanged), object: nil)
@@ -156,7 +160,7 @@ public class StreamView: UIScrollView {
         }
     }
     
-    public func locksChanged() {
+    @objc public func locksChanged() {
         if !locked && !StreamView.locked && reloadAfterUnlock {
             reloadAfterUnlock = false
             reload()
@@ -223,7 +227,7 @@ public class StreamView: UIScrollView {
             
             let position = StreamPosition(section: section, index: 0)
             for header in dataSource.headerMetricsIn(section: section) {
-               _ = addItem(metrics: header, position: position)
+                _ = addItem(metrics: header, position: position)
             }
             
             for i in 0..<dataSource.numberOfItemsIn(section: section) {
@@ -243,7 +247,6 @@ public class StreamView: UIScrollView {
         }
         if items.isEmpty, let placeholder = placeholderViewBlock {
             let placeholderView = placeholder()
-            placeholderView.layoutInStreamView(streamView: self)
             self.placeholderView = placeholderView
         }
     }
@@ -328,18 +331,26 @@ public class StreamView: UIScrollView {
         return items.filter(test)
     }
     
-    public func scrollToItemPassingTest( test: (StreamItem) -> Bool, animated: Bool) -> StreamItem? {
+    @discardableResult public func scrollToItemPassingTest( test: (StreamItem) -> Bool, positionScroll: PositionScroll = .middle, animated: Bool) -> StreamItem? {
         let item = itemPassingTest(test: test)
-        scrollToItem(item: item, animated: animated)
+        scrollToItem(item: item, positionScroll: positionScroll, animated: animated)
         return item
     }
     
-    public func scrollToItem(item: StreamItem?, animated: Bool)  {
+    public func scrollToItem(item: StreamItem?, positionScroll: PositionScroll = .middle, animated: Bool)  {
         guard let item = item else { return }
         let minOffset = minimumContentOffset
         let maxOffset = maximumContentOffset
         if layout.horizontal {
-            let offset = (item.frame.origin.x - contentInset.right) - fittingContentWidth / 2 + item.frame.size.width / 2
+            var offset: CGFloat = 0
+            switch positionScroll {
+            case .top:
+                offset = item.frame.origin.x - contentInset.right
+            case .middle:
+                offset = (item.frame.origin.x - contentInset.right) - fittingContentWidth / 2 + item.frame.size.width / 2
+            case .bottom:
+                offset = (item.frame.origin.x - contentInset.right) - fittingContentWidth + item.frame.size.width
+            }
             if offset < minOffset.x {
                 setContentOffset(minOffset, animated: animated)
             } else if offset > maxOffset.x {
@@ -348,7 +359,15 @@ public class StreamView: UIScrollView {
                 setContentOffset(CGPoint.init(x: offset, y: 0), animated: animated)
             }
         } else {
-            let offset = (item.frame.origin.y - contentInset.top) - fittingContentHeight / 2 + item.frame.size.height / 2
+            var offset: CGFloat = 0
+            switch positionScroll {
+            case .top:
+                offset = item.frame.origin.y - contentInset.top
+            case .middle:
+                offset = (item.frame.origin.y - contentInset.top) - fittingContentHeight / 2 + item.frame.size.height / 2
+            case .bottom:
+                offset = (item.frame.origin.y - contentInset.top) - fittingContentHeight + item.frame.size.height
+            }
             if offset < minOffset.y {
                 setContentOffset(minOffset, animated: animated)
             } else if offset > maxOffset.y {
@@ -363,3 +382,4 @@ public class StreamView: UIScrollView {
         return true
     }
 }
+

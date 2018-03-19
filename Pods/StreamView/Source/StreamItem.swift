@@ -12,15 +12,15 @@ import UIKit
 
 public final class StreamItem {
     
-    var frame = CGRect.zero
-    var visible = false
-    let position: StreamPosition
-    let metrics: StreamMetricsProtocol
-    var entryBlock: ((StreamItem) -> Any?)?
+    public var frame = CGRect.zero
+    public var visible = false
+    public let position: StreamPosition
+    public let metrics: StreamMetricsProtocol
+    public var entryBlock: ((StreamItem) -> Any?)?
     
     public init(metrics: StreamMetricsProtocol, position: StreamPosition) {
         self.metrics = metrics
-        self.position = position
+        self.position = position 
         hidden = metrics.hidden
         size = metrics.size
         insets = metrics.insets
@@ -52,8 +52,8 @@ public func ==(lhs: StreamPosition, rhs: StreamPosition) -> Bool {
 }
 
 public struct StreamPosition: Equatable {
-    let section: Int
-    let index: Int
+    public let section: Int
+    public let index: Int
     static let zero = StreamPosition(section: 0, index: 0)
 }
 
