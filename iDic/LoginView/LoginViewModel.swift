@@ -12,13 +12,14 @@ import RxCocoa
 import Reachability
 
 class LoginViewModel {
-    var emailValidation: Driver<ValidateResult>?
-    var passwordValidation: Driver<ValidateResult>?
-    var isAllow: Driver<Bool>?
-    var signin: Driver<Any>?
-    var reachable: Driver<Bool>?
     
-    func setup(email: Driver<String>, password: Driver<String>, loginTap: Driver<Void>) {
+    var emailValidation: Driver<ValidateResult>
+    var passwordValidation: Driver<ValidateResult>
+    var isAllow: Driver<Bool>
+    var signin: Driver<Any>
+    var reachable: Driver<Bool>
+
+    init(email: Driver<String>, password: Driver<String>, loginTap: Driver<Void>) {
         emailValidation = email.flatMapLatest { email in
             guard email.isValidEmail else { return .just(.failure) }
             return .just(.validate)

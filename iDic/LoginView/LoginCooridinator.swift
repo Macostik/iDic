@@ -18,11 +18,9 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        let viewModel = LoginViewModel()
         let viewController = LoginViewController.instantiate()
         let navigationController = UINavigationController(rootViewController: viewController)
-        
-        viewController.viewModel = viewModel
+        navigationController.isNavigationBarHidden = true
         
 //        viewModel.showRepository
 //            .subscribe(onNext: { [weak self] in self?.showRepository(by: $0, in: navigationController) })
@@ -43,6 +41,4 @@ class LoginCoordinator: BaseCoordinator<Void> {
         
         return Observable.never()
     }
-
-    
 }

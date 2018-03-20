@@ -17,7 +17,6 @@
 		562D70FB1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FA1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift */; };
 		562D70FD1F8EA9AD001D4BE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */; };
 		56331CF51FCDF4E00050AB26 /* Rechability+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */; };
-		56331CF81FCDFB010050AB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56331CF61FCDFB010050AB26 /* Main.storyboard */; };
 		56331CFA1FCDFBBF0050AB26 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */; };
 		566BB2C6206127B000F3CA60 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */; };
 		566BB2CA206128A300F3CA60 /* LoginCooridinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */; };
@@ -33,6 +32,7 @@
 		567AD1121FCEA0A400712A0A /* SlimLogglyDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567AD10E1FCEA0A400712A0A /* SlimLogglyDestination.swift */; };
 		567AD1141FCEA0C800712A0A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567AD1131FCEA0C800712A0A /* Logger.swift */; };
 		567AD1161FCEA11200712A0A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567AD1151FCEA11200712A0A /* BaseViewController.swift */; };
+		567BA7C22061541E006A0BA3 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567BA7C12061541E006A0BA3 /* LoginViewController.storyboard */; };
 		56A7FA701F97E95700310E43 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A7FA6F1F97E95700310E43 /* APIManager.swift */; };
 		56EB71E81E9AC21D00BA1A8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB71E71E9AC21D00BA1A8C /* AppDelegate.swift */; };
 		56EB71EA1E9AC21D00BA1A8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */; };
@@ -76,7 +76,6 @@
 		562D70FA1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+RxSwift+Ext.swift"; sourceTree = "<group>"; };
 		562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rechability+Ext.swift"; sourceTree = "<group>"; };
-		56331CF71FCDFB010050AB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
 		566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCooridinator.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		567AD10E1FCEA0A400712A0A /* SlimLogglyDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogglyDestination.swift; sourceTree = "<group>"; };
 		567AD1131FCEA0C800712A0A /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		567AD1151FCEA11200712A0A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		567BA7C12061541E006A0BA3 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		567EC06A1F856E910092490C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56A7FA6F1F97E95700310E43 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		56EB71E41E9AC21D00BA1A8C /* iDic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,22 +190,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		562D70F31F8D5573001D4BE2 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
-		562D70F41F8D5582001D4BE2 /* View Controls */ = {
-			isa = PBXGroup;
-			children = (
-				56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */,
-			);
-			path = "View Controls";
-			sourceTree = "<group>";
-		};
 		562D70F71F8D5A53001D4BE2 /* API Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +211,6 @@
 		566BB2C82061287800F3CA60 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */,
 				566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -243,6 +226,17 @@
 				567AD10C1FCEA0A400712A0A /* SlimLogglyDestinationConfig.swift */,
 			);
 			path = SlimLogger;
+			sourceTree = "<group>";
+		};
+		567BA7C0206153DF006A0BA3 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */,
+				56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */,
+				562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */,
+				567BA7C12061541E006A0BA3 /* LoginViewController.storyboard */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		56EB71DB1E9AC21D00BA1A8C = {
@@ -274,9 +268,8 @@
 				562D70F71F8D5A53001D4BE2 /* API Manager */,
 				566BB2C72061282600F3CA60 /* BaseClass */,
 				566BB2C82061287800F3CA60 /* Coordinators */,
+				567BA7C0206153DF006A0BA3 /* LoginView */,
 				562D70F21F8D555B001D4BE2 /* Models */,
-				562D70F41F8D5582001D4BE2 /* View Controls */,
-				562D70F31F8D5573001D4BE2 /* View Models */,
 				5625A3851F7C2FE600753525 /* Views */,
 				5625A37F1F7AEA1C00753525 /* Extensions */,
 				5625A37B1F7AE3E500753525 /* Resource */,
@@ -284,7 +277,6 @@
 				5613439C2060601F009DA4FD /* SocketManager */,
 				5625A3791F7AD7DB00753525 /* iDic.entitlements */,
 				56EB71EE1E9AC21D00BA1A8C /* Assets.xcassets */,
-				56331CF61FCDFB010050AB26 /* Main.storyboard */,
 				56EB71F01E9AC21D00BA1A8C /* LaunchScreen.storyboard */,
 				567EC06A1F856E910092490C /* GoogleService-Info.plist */,
 				56EB71F31E9AC21D00BA1A8C /* Info.plist */,
@@ -449,10 +441,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56331CF81FCDFB010050AB26 /* Main.storyboard in Resources */,
 				56EB71F21E9AC21D00BA1A8C /* LaunchScreen.storyboard in Resources */,
 				56EB71EF1E9AC21D00BA1A8C /* Assets.xcassets in Resources */,
 				56331CFA1FCDFBBF0050AB26 /* no_internet_connection.json in Resources */,
+				567BA7C22061541E006A0BA3 /* LoginViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,14 +646,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		56331CF61FCDFB010050AB26 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				56331CF71FCDFB010050AB26 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		56EB71F01E9AC21D00BA1A8C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -44,3 +44,16 @@ public extension StoryboardBased where Self: UIViewController {
         return vc
     }
 }
+
+protocol ViewModelBased: class {
+    associatedtype ViewModel
+    var viewModel: ViewModel? { get set }
+}
+
+extension ViewModelBased where Self: StoryboardBased & UIViewController {
+    static func instantiate (with viewModel: ViewModel) -> Self {
+        let viewController = Self.instantiate()
+        viewController.viewModel = viewModel
+        return viewController
+    }
+}
