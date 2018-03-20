@@ -280,6 +280,7 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
     }
 
     private func createWebSocketAndConnect() {
+        ws?.delegate = nil // TODO this seems a bit defensive, is this really needed?
         var req = URLRequest(url: urlWebSocketWithSid)
 
         addHeaders(to: &req)
@@ -287,32 +288,9 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
         ws = WebSocket(request: req)
         ws?.callbackQueue = engineQueue
         ws?.enableCompression = compress
+        ws?.delegate = self
         ws?.disableSSLCertValidation = selfSigned
         ws?.security = security?.security
-
-        ws?.onConnect = {[weak self] in
-            guard let this = self else { return }
-
-            this.websocketDidConnect()
-        }
-
-        ws?.onDisconnect = {[weak self] error in
-            guard let this = self else { return }
-
-            this.websocketDidDisconnect(error: error)
-        }
-
-        ws?.onData = {[weak self] data in
-            guard let this = self else { return }
-
-            this.parseEngineData(data)
-        }
-
-        ws?.onText = {[weak self] message in
-            guard let this = self else { return }
-
-            this.parseEngineMessage(message)
-        }
 
         ws?.connect()
     }
@@ -483,6 +461,8 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
     /// Parses a raw engine.io packet.
     ///
     /// - parameter message: The message to parse.
+    /// - parameter fromPolling: Whether this message is from long-polling.
+    ///                          If `true` we might have to fix utf8 encoding.
     public func parseEngineMessage(_ message: String) {
         DefaultSocketLogger.Logger.log("Got message: \(message)", type: SocketEngine.logType)
 
@@ -606,8 +586,8 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
     /// Writes a message to engine.io, independent of transport.
     ///
     /// - parameter msg: The message to send.
-    /// - parameter type: The type of this message.
-    /// - parameter data: Any data that this message has.
+    /// - parameter withType: The type of this message.
+    /// - parameter withData: Any data that this message has.
     public func write(_ msg: String, withType type: SocketEnginePacketType, withData data: [Data]) {
         engineQueue.async {
             guard self.connected else { return }
@@ -629,9 +609,10 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
         }
     }
 
-    // WebSocket Methods
+    // MARK: Starscream delegate conformance
 
-    private func websocketDidConnect() {
+    /// Delegate method for connection.
+    public func websocketDidConnect(socket: WebSocketClient) {
         if !forceWebsockets {
             probing = true
             probeWebSocket()
@@ -642,7 +623,8 @@ public final class SocketEngine : NSObject, URLSessionDelegate, SocketEnginePoll
         }
     }
 
-    private func websocketDidDisconnect(error: Error?) {
+    /// Delegate method for disconnection.
+    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         probing = false
 
         if closed {

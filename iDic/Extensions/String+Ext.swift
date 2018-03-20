@@ -68,7 +68,8 @@ extension String {
     }
     
     var isValidPhone: Bool {
-        guard let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue) else { return false }
+        let phoneNumber = NSTextCheckingResult.CheckingType.phoneNumber.rawValue
+        guard let detector = try? NSDataDetector(types: phoneNumber) else { return false }
         
         if let match = detector.matches(in: self as String,
                                         options: [],

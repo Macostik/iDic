@@ -25,7 +25,6 @@ class TextView: UITextView {
         }
     }
 
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -41,7 +40,10 @@ class TextView: UITextView {
     }
     
     func awake() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.textDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: self)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.textDidChange),
+                                               name: NSNotification.Name.UITextViewTextDidChange,
+                                               object: self)
         if isEditable && dataDetectorTypes != .none {
             dataDetectorTypes = .all
         }

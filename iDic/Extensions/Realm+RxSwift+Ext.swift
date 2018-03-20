@@ -14,11 +14,11 @@ extension Results {
     func asObservable() -> Observable<RealmCollectionChange<Results<Element>>> {
         return Observable.create { observer in
             var token: NotificationToken? = nil
-            token = self.addNotificationBlock({ change in
+            token = self.observe({ change in
                 observer.onNext(change)
             })
             return Disposables.create {
-                token?.stop()
+                token?.invalidate()
             }
         }
     }

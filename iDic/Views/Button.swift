@@ -19,7 +19,10 @@ protocol Selectable: class {
 
 class Button : UIButton {
     
-    convenience init(icon: String, font: UIFont = UIFont.systemFont(ofSize: 17.0), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.black) {
+    convenience init(icon: String,
+                     font: UIFont = UIFont.systemFont(ofSize: 17.0),
+                     size: CGFloat = UIFont.systemFontSize,
+                     textColor: UIColor = UIColor.black) {
         self.init()
         titleLabel?.font = UIFont.iDic(size)
         setTitle(icon, for: .normal)
@@ -35,7 +38,6 @@ class Button : UIButton {
     
     @IBOutlet var highlightings: [UIView] = []
     @IBOutlet var selectings: [UIView] = []
-    
     
     @IBInspectable var insets: CGSize = CGSize.zero
     @IBInspectable var spinnerColor: UIColor?
@@ -161,11 +163,12 @@ class Button : UIButton {
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         var rect = bounds
-        rect = rect.insetBy(dx: -max(0, touchArea.width - rect.width)/2, dy: -max(0, touchArea.height - rect.height)/2)
+        rect = rect.insetBy(dx: -max(0, touchArea.width - rect.width)/2,
+                            dy: -max(0, touchArea.height - rect.height)/2)
         return rect.contains(point)
     }
     
-    fileprivate var clickHelper: ObjectBlock? = nil
+    fileprivate var clickHelper: ObjectBlock? 
     
     func click(_ clickHelper: @escaping ObjectBlock) {
         self.addTarget(self, action: #selector(performAction), for: .touchUpInside)

@@ -130,13 +130,15 @@ import Starscream
     /// Parses a raw engine.io packet.
     ///
     /// - parameter message: The message to parse.
+    /// - parameter fromPolling: Whether this message is from long-polling.
+    ///                          If `true` we might have to fix utf8 encoding.
     func parseEngineMessage(_ message: String)
 
     /// Writes a message to engine.io, independent of transport.
     ///
     /// - parameter msg: The message to send.
-    /// - parameter type: The type of this message.
-    /// - parameter data: Any data that this message has.
+    /// - parameter withType: The type of this message.
+    /// - parameter withData: Any data that this message has.
     func write(_ msg: String, withType type: SocketEnginePacketType, withData data: [Data])
 }
 

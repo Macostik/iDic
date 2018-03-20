@@ -32,7 +32,10 @@ extension Dictionary {
     
     static func plist(name: String) -> Dictionary? {
         guard let path = Bundle.main.plist(name: name), let data = try? Data(contentsOf: path),
-            let hashTable = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [Key: Value] else { return nil }
+            let hashTable = try? PropertyListSerialization.propertyList(from: data,
+                                                                        options: [],
+                                                                        format: nil) as? [Key: Value]
+            else { return nil }
         return hashTable
     }
 }
@@ -42,4 +45,3 @@ extension UIFont {
         return UIFont(name: "idic", size: size)
     }
 }
-

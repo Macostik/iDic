@@ -495,8 +495,7 @@ NSURLSessionDataDelegate
 
   NSString *url = [FBSDKGraphRequest serializeURL:baseURL
                                            params:request.parameters
-                                       httpMethod:request.HTTPMethod
-                                         forBatch:forBatch];
+                                       httpMethod:request.HTTPMethod];
   return url;
 }
 

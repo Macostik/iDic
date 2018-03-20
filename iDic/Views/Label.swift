@@ -15,7 +15,10 @@ class Label: UILabel {
     private var fontSize: CGFloat = 16.0
     private var _isUpperCased = false
     
-    convenience init(icon: String, font: UIFont = UIFont.systemFont(ofSize: 17.0), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.black) {
+    convenience init(icon: String,
+                     font: UIFont = UIFont.systemFont(ofSize: 17.0),
+                     size: CGFloat = UIFont.systemFontSize,
+                     textColor: UIColor = UIColor.black) {
         self.init()
         self.font = UIFont.iDic(size)
         self.text = icon

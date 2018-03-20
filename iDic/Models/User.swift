@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    dynamic var id: String = ""
-    dynamic var firstName: String = ""
-    dynamic var lastName: String = ""
-    dynamic var photoUrl: String = ""
-    dynamic var email: String = ""
+    @objc dynamic var id: String = ""
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var photoUrl: String = ""
+    @objc dynamic var email: String = ""
     
     override static func primaryKey() -> String? {
         return "id"

@@ -9,9 +9,9 @@
 import UIKit
 import SnapKit
 
-typealias Block = () -> ()
-typealias ObjectBlock = (AnyObject?) -> (Void)
-typealias BooleanBlock = (Bool) -> ()
+typealias Block = () -> Void
+typealias ObjectBlock = (AnyObject?) -> Void
+typealias BooleanBlock = (Bool) -> Void
 
 func specify<T>(_ object: T, _ specify: (T) -> Void) -> T {
     specify(object)
@@ -27,7 +27,7 @@ func mapReflection<T, U>(x: T,  transform: (Mirror.Child) -> U) -> [U] {
     return result
 }
 
-func iterateEnum<T: Hashable>(_: T.Type) -> Array<T> {
+func iterateEnum<T: Hashable>(_: T.Type) -> [T] {
     var i = 0
     let iterator: AnyIterator<T> = AnyIterator {
         let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
@@ -38,7 +38,10 @@ func iterateEnum<T: Hashable>(_: T.Type) -> Array<T> {
     return Array(iterator)
 }
 
-func animate(animated: Bool = true, duration: TimeInterval = 0.3, curve: UIViewAnimationCurve = .easeInOut, animations: () -> ()) {
+func animate(animated: Bool = true,
+             duration: TimeInterval = 0.3,
+             curve: UIViewAnimationCurve = .easeInOut,
+             animations: Block) {
     if animated {
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(duration)
@@ -115,7 +118,6 @@ extension UIView {
         UIView.performAnimated(animated: animated) { self.alpha = alpha }
     }
     
-    
     func setTransform(transform: CGAffineTransform, animated: Bool) {
         UIView.performAnimated(animated: animated) { self.transform = transform }
     }
@@ -147,7 +149,7 @@ extension UIView {
         set { layer.borderColor = newValue?.cgColor }
         get {
             guard let color = layer.borderColor else { return nil }
-            return UIColor.init(cgColor: color) ;
+            return UIColor.init(cgColor: color)
         }
     }
     
@@ -191,9 +193,3 @@ extension UIView {
         get { return layer.opacity }
     }
 }
-
-
-
-
-
-
