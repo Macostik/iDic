@@ -9,9 +9,17 @@
 import Foundation
 import UIKit
 
+protocol ViewModelBased: class {
+    associatedtype ViewModel
+    var viewModel: ViewModel? { get set }
+}
+
+struct LastVisibleScreen {
+    static var lastAppearedScreenName: String = ""
+}
+
 class BaseViewController: UIViewController {
     
-    static var lastAppearedScreenName: String?
     var screenName: String = ""
     
     override func viewDidLoad() {
@@ -21,7 +29,7 @@ class BaseViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        BaseViewController.lastAppearedScreenName = screenName
+        LastVisibleScreen.lastAppearedScreenName = screenName
     }
 }
 
@@ -45,13 +53,8 @@ public extension StoryboardBased where Self: UIViewController {
     }
 }
 
-protocol ViewModelBased: class {
-    associatedtype ViewModel
-    var viewModel: ViewModel? { get set }
-}
-
-extension ViewModelBased where Self: StoryboardBased & UIViewController {
-    static func instantiate (with viewModel: ViewModel) -> Self {
+extension StoryboardBased where Self: UIViewController & ViewModelBased {
+    static func instantiate(with viewModel: ViewModel) -> Self {
         let viewController = Self.instantiate()
         viewController.viewModel = viewModel
         return viewController

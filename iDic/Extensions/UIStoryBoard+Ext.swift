@@ -59,7 +59,3 @@ extension UINavigationController {
         return topViewController?.supportedInterfaceOrientations ?? super.supportedInterfaceOrientations
     }
 }
-
-struct Storyboard {
-    static let LoginViewController = StoryboardObject<LoginViewController>("LoginViewController")
-}

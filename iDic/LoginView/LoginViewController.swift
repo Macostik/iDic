@@ -14,10 +14,11 @@ import RxCocoa
 import Lottie
 import SnapKit
 
-class LoginViewController: BaseViewController, StoryboardBased, GIDSignInDelegate, GIDSignInUIDelegate {
-  
-//    typealias ViewModel = LoginViewModel
-//    var viewModel: LoginViewModel?
+class LoginViewController: BaseViewController, ViewModelBased,
+StoryboardBased, GIDSignInDelegate, GIDSignInUIDelegate {
+    
+    typealias ViewModel = LoginViewModel
+    var viewModel: ViewModel?
     
     @IBOutlet var emailTextField: TextField!
     @IBOutlet var passwordTextField: TextField!
@@ -33,23 +34,26 @@ class LoginViewController: BaseViewController, StoryboardBased, GIDSignInDelegat
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        let viewModel = LoginViewModel(
-            email: self.emailTextField.rx.text.orEmpty.filter({!$0.isEmpty}).asDriver(onErrorJustReturn: ""),
-            password: self.passwordTextField.rx.text.orEmpty.asDriver(),
-            loginTap: self.signinButton.rx.tap.asDriver().do(onNext: { [weak self] in
-                self?.signinButton.loading = true
-            }))
+        bindingViewModel()
+    }
+    
+    private func bindingViewModel() {
+        viewModel?.email = self.emailTextField.rx.text.orEmpty
+            .filter({!$0.isEmpty})
+            .asDriver(onErrorJustReturn: "")
+        viewModel?.password = self.passwordTextField.rx.text.orEmpty.asDriver()
+        viewModel?.loginTap = self.signinButton.rx.tap.asDriver(onErrorJustReturn: Void())
         
-        viewModel.emailValidation
+        viewModel?.emailValidation
             .drive(emailLabel.rx.validatationResult)
             .disposed(by: disposeBag)
-        viewModel.passwordValidation
+        viewModel?.passwordValidation
             .drive(passwordLabel.rx.validatationResult)
             .disposed(by: disposeBag)
-        viewModel.isAllow.drive(onNext: { [weak self] isValid in
+        viewModel?.isAllow.drive(onNext: { [weak self] isValid in
             self?.signinButton.active = isValid
         }).disposed(by: disposeBag)
-        viewModel.reachable.drive(onNext: { [weak self] _ in
+        viewModel?.reachable.drive(onNext: { [weak self] _ in
             self?.view.add(specify(LOTAnimationView(name: "no_internet_connection"), {
                 $0.play()
                 $0.loopAnimation = true
@@ -58,7 +62,7 @@ class LoginViewController: BaseViewController, StoryboardBased, GIDSignInDelegat
                 $0.size.equalTo(60)
             })
         }).disposed(by: disposeBag)
-        viewModel.signin
+        viewModel?.signin
             .drive(onNext: { [weak self] result in
                 print("User signed in \(result)")
                 self?.signinButton.loading = false

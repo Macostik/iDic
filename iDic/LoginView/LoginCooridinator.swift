@@ -18,23 +18,9 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        let viewController = LoginViewController.instantiate()
+        let viewController = LoginViewController.instantiate(with: LoginViewModel())
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true
-        
-//        viewModel.showRepository
-//            .subscribe(onNext: { [weak self] in self?.showRepository(by: $0, in: navigationController) })
-//            .disposed(by: disposeBag)
-//
-//        viewModel.showLanguageList
-//            .flatMap { [weak self] _ -> Observable<String?> in
-//                guard let `self` = self else { return .empty() }
-//                return self.showLanguageList(on: viewController)
-//            }
-//            .filter { $0 != nil }
-//            .map { $0! }
-//            .bind(to: viewModel.setCurrentLanguage)
-//            .disposed(by: disposeBag)
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

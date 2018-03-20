@@ -90,7 +90,7 @@ class SlimLogglyDestination: LogDestination {
 //        mutableDict.setObject(User.uuid(), forKey: "userid")
         mutableDict.setObject(UIApplication.shared.applicationState.displayName(),
                               forKey: "app_state" as NSCopying)
-        mutableDict.setObject(BaseViewController.lastAppearedScreenName ?? "",
+        mutableDict.setObject(LastVisibleScreen.lastAppearedScreenName,
                               forKey: "last_visited_screen" as NSCopying)
 
         if let jsondata = toJson(mutableDict) {
