@@ -29,7 +29,7 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        let userViewModel = UserViewModel(
+        let userViewModel = LoginViewModel(
             email: self.emailTextField.rx.text.orEmpty.filter({ !$0.isEmpty })
                 .asDriver(onErrorJustReturn: ""),
             password: self.passwordTextField.rx.text.orEmpty.asDriver(),
@@ -56,8 +56,8 @@ class LoginViewController: BaseViewController, GIDSignInDelegate, GIDSignInUIDel
             })
         }).disposed(by: disposeBag)
         userViewModel.signin
-            .drive(onNext: { [weak self] user in
-                print("User signed in \(user)")
+            .drive(onNext: { [weak self] result in
+                print("User signed in \(result)")
                 self?.signinButton.loading = false
             })
             .disposed(by: disposeBag)

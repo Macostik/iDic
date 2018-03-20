@@ -15,10 +15,13 @@
 		562D70F61F8D563F001D4BE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70F51F8D563F001D4BE2 /* User.swift */; };
 		562D70F91F8D5A88001D4BE2 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70F81F8D5A88001D4BE2 /* Results.swift */; };
 		562D70FB1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FA1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift */; };
-		562D70FD1F8EA9AD001D4BE2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FC1F8EA9AD001D4BE2 /* UserViewModel.swift */; };
+		562D70FD1F8EA9AD001D4BE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */; };
 		56331CF51FCDF4E00050AB26 /* Rechability+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */; };
 		56331CF81FCDFB010050AB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56331CF61FCDFB010050AB26 /* Main.storyboard */; };
 		56331CFA1FCDFBBF0050AB26 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */; };
+		566BB2C6206127B000F3CA60 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */; };
+		566BB2CA206128A300F3CA60 /* LoginCooridinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */; };
+		566BB2CC20612A2500F3CA60 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */; };
 		5679BF961F7C428200587F2E /* Bundle+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF921F7C3CA900587F2E /* Bundle+Ext.swift */; };
 		5679BF971F7C428500587F2E /* UIStoryBoard+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF911F7C39C100587F2E /* UIStoryBoard+Ext.swift */; };
 		5679BF981F7C428C00587F2E /* UIBezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF931F7C3CB300587F2E /* UIBezierPath+Ext.swift */; };
@@ -71,10 +74,13 @@
 		562D70F51F8D563F001D4BE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		562D70F81F8D5A88001D4BE2 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		562D70FA1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+RxSwift+Ext.swift"; sourceTree = "<group>"; };
-		562D70FC1F8EA9AD001D4BE2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rechability+Ext.swift"; sourceTree = "<group>"; };
 		56331CF71FCDFB010050AB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
+		566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCooridinator.swift; sourceTree = "<group>"; };
+		566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5679BF901F7C353F00587F2E /* idic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = idic.ttf; sourceTree = "<group>"; };
 		5679BF911F7C39C100587F2E /* UIStoryBoard+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryBoard+Ext.swift"; sourceTree = "<group>"; };
 		5679BF921F7C3CA900587F2E /* Bundle+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Ext.swift"; sourceTree = "<group>"; };
@@ -187,7 +193,7 @@
 		562D70F31F8D5573001D4BE2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				562D70FC1F8EA9AD001D4BE2 /* UserViewModel.swift */,
+				562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -196,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				56EB71E91E9AC21D00BA1A8C /* LoginViewController.swift */,
-				567AD1151FCEA11200712A0A /* BaseViewController.swift */,
 			);
 			path = "View Controls";
 			sourceTree = "<group>";
@@ -208,6 +213,24 @@
 				56A7FA6F1F97E95700310E43 /* APIManager.swift */,
 			);
 			path = "API Manager";
+			sourceTree = "<group>";
+		};
+		566BB2C72061282600F3CA60 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				567AD1151FCEA11200712A0A /* BaseViewController.swift */,
+				566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		566BB2C82061287800F3CA60 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */,
+				566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		567AD10A1FCEA08D00712A0A /* SlimLogger */ = {
@@ -249,9 +272,11 @@
 			children = (
 				56EB71E71E9AC21D00BA1A8C /* AppDelegate.swift */,
 				562D70F71F8D5A53001D4BE2 /* API Manager */,
+				566BB2C72061282600F3CA60 /* BaseClass */,
+				566BB2C82061287800F3CA60 /* Coordinators */,
+				562D70F21F8D555B001D4BE2 /* Models */,
 				562D70F41F8D5582001D4BE2 /* View Controls */,
 				562D70F31F8D5573001D4BE2 /* View Models */,
-				562D70F21F8D555B001D4BE2 /* Models */,
 				5625A3851F7C2FE600753525 /* Views */,
 				5625A37F1F7AEA1C00753525 /* Extensions */,
 				5625A37B1F7AE3E500753525 /* Resource */,
@@ -573,6 +598,7 @@
 				567AD1161FCEA11200712A0A /* BaseViewController.swift in Sources */,
 				5625A38A1F7C303D00753525 /* TextField.swift in Sources */,
 				56331CF51FCDF4E00050AB26 /* Rechability+Ext.swift in Sources */,
+				566BB2CC20612A2500F3CA60 /* AppCoordinator.swift in Sources */,
 				5625A38D1F7C304700753525 /* Button.swift in Sources */,
 				5679BF991F7C428C00587F2E /* UIView+Ext.swift in Sources */,
 				5625A38B1F7C304100753525 /* TextView.swift in Sources */,
@@ -582,6 +608,8 @@
 				567AD1111FCEA0A400712A0A /* SlimLoggerConfig.swift in Sources */,
 				5679BF981F7C428C00587F2E /* UIBezierPath+Ext.swift in Sources */,
 				5679BF971F7C428500587F2E /* UIStoryBoard+Ext.swift in Sources */,
+				566BB2C6206127B000F3CA60 /* BaseCoordinator.swift in Sources */,
+				566BB2CA206128A300F3CA60 /* LoginCooridinator.swift in Sources */,
 				5679BF961F7C428200587F2E /* Bundle+Ext.swift in Sources */,
 				562D70F61F8D563F001D4BE2 /* User.swift in Sources */,
 				562D70FB1F8D5DD2001D4BE2 /* Realm+RxSwift+Ext.swift in Sources */,
@@ -589,7 +617,7 @@
 				562D70F91F8D5A88001D4BE2 /* Results.swift in Sources */,
 				5625A38C1F7C304400753525 /* Label.swift in Sources */,
 				56EB71E81E9AC21D00BA1A8C /* AppDelegate.swift in Sources */,
-				562D70FD1F8EA9AD001D4BE2 /* UserViewModel.swift in Sources */,
+				562D70FD1F8EA9AD001D4BE2 /* LoginViewModel.swift in Sources */,
 				5679BF9A1F7C428C00587F2E /* String+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
