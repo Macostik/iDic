@@ -12,9 +12,10 @@ import RxCocoa
 import Reachability
 
 class LoginViewModel {
-    var email = Driver.just("")
-    var password = Driver.just("")
-    var loginTap = Driver.just(Void())
+    var email = Driver<String>.empty()
+    var password = Driver<String>.empty()
+    var loginTap = Driver<Void>.empty()
+    var isSignin = PublishSubject<Bool>()
     
     lazy var emailValidation: Driver<ValidateResult> = (self.email.flatMapLatest { email in
         guard email.isValidEmail else { return .just(.failure) }
@@ -36,6 +37,9 @@ class LoginViewModel {
     lazy var permition = Driver.combineLatest(email, password).map {($0, $1)}
     lazy var signin: Driver<Any> = self.loginTap.withLatestFrom(permition)
         .flatMapLatest { (email, password) -> Driver<Any> in
-            return APIManager.shared.signup(email, password: password).asDriver(onErrorJustReturn: false)
+            let a = APIManager.shared.signup(email, password: password).do(onNext: { one in
+                self.isSignin.onNext(true)
+            }).asDriver(onErrorJustReturn: false)
+            return a
     }
 }

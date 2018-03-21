@@ -18,13 +18,26 @@ class LoginCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<Void> {
-        let viewController = LoginViewController.instantiate(with: LoginViewModel())
+        let viewModel = LoginViewModel()
+        let viewController = LoginViewController.instantiate(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true
+        
+        viewModel.isSignin
+            .asObserver()
+            .subscribe(onNext: { [unowned self] _ in
+                self.showChat(on: viewController)
+            })
+            .disposed(by: disposeBag)
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         return Observable.never()
+    }
+    
+    private func showChat(on rootViewController: UIViewController) -> Observable<Void> {
+        let chatCoordinator = ChatCoordinator(rootViewController: rootViewController)
+        return coordinate(to: chatCoordinator)
     }
 }
