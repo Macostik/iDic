@@ -21,6 +21,8 @@ class ChatCoordinator: BaseCoordinator<Void> {
         let viewController = ChatViewController.instantiate(with: ChatViewModel())
         let navigationController = UINavigationController(rootViewController: viewController)
         
+        rootViewController.present(navigationController, animated: false)
+        
         return Observable.never()
     }
 }

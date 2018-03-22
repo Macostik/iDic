@@ -42,7 +42,9 @@ StoryboardBased, GIDSignInDelegate, GIDSignInUIDelegate {
             .filter({!$0.isEmpty})
             .asDriver(onErrorJustReturn: "")
         viewModel?.password = self.passwordTextField.rx.text.orEmpty.asDriver()
-        viewModel?.loginTap = self.signinButton.rx.tap.asDriver(onErrorJustReturn: Void())
+        viewModel?.loginTap = self.signinButton.rx.tap.do(onNext: {[unowned self] _ in
+            self.signinButton.loading = true
+        }).asDriver(onErrorJustReturn: Void())
         
         viewModel?.emailValidation
             .drive(emailLabel.rx.validatationResult)
