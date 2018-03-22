@@ -18,6 +18,7 @@
 		562D70FD1F8EA9AD001D4BE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */; };
 		56331CF51FCDF4E00050AB26 /* Rechability+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */; };
 		56331CFA1FCDFBBF0050AB26 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = 56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */; };
+		5637DBEC2063FD8A005FBC2E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5637DBEB2063FD8A005FBC2E /* MessageCell.swift */; };
 		566BB2C6206127B000F3CA60 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */; };
 		566BB2CA206128A300F3CA60 /* LoginCooridinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */; };
 		566BB2CC20612A2500F3CA60 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */; };
@@ -82,6 +83,7 @@
 		562D70FC1F8EA9AD001D4BE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		56331CF41FCDF4E00050AB26 /* Rechability+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rechability+Ext.swift"; sourceTree = "<group>"; };
 		56331CF91FCDFBBF0050AB26 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
+		5637DBEB2063FD8A005FBC2E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		566BB2C5206127B000F3CA60 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		566BB2C9206128A300F3CA60 /* LoginCooridinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCooridinator.swift; sourceTree = "<group>"; };
 		566BB2CB20612A2500F3CA60 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				56E844A42062A7FA00DCDBC1 /* ChatViewController.storyboard */,
 				56E844A52062A7FA00DCDBC1 /* ChatViewController.swift */,
 				56E844A62062A7FA00DCDBC1 /* ChatViewModel.swift */,
+				5637DBEB2063FD8A005FBC2E /* MessageCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				567AD1111FCEA0A400712A0A /* SlimLoggerConfig.swift in Sources */,
 				5679BF981F7C428C00587F2E /* UIBezierPath+Ext.swift in Sources */,
 				5679BF971F7C428500587F2E /* UIStoryBoard+Ext.swift in Sources */,
+				5637DBEC2063FD8A005FBC2E /* MessageCell.swift in Sources */,
 				56E844A72062A7FA00DCDBC1 /* ChatCoordinator.swift in Sources */,
 				566BB2C6206127B000F3CA60 /* BaseCoordinator.swift in Sources */,
 				566BB2CA206128A300F3CA60 /* LoginCooridinator.swift in Sources */,
