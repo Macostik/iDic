@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5613439E20606047009DA4FD /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5613439D20606047009DA4FD /* SocketManager.swift */; };
+		5623337A206533E8006E2546 /* RunQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56233379206533E8006E2546 /* RunQueue.swift */; };
 		5625A38A1F7C303D00753525 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3861F7C2FF300753525 /* TextField.swift */; };
 		5625A38B1F7C304100753525 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3871F7C2FFF00753525 /* TextView.swift */; };
 		5625A38C1F7C304400753525 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5625A3881F7C300800753525 /* Label.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		25C8ECBE013F8C70D8FC2BC5 /* Pods-iDic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDic.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDic/Pods-iDic.release.xcconfig"; sourceTree = "<group>"; };
 		5613439D20606047009DA4FD /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		56233379206533E8006E2546 /* RunQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunQueue.swift; sourceTree = "<group>"; };
 		5625A3791F7AD7DB00753525 /* iDic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iDic.entitlements; sourceTree = "<group>"; };
 		5625A3821F7AF10D00753525 /* launch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = launch.json; sourceTree = "<group>"; };
 		5625A3831F7C2F5000753525 /* success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				562D70F51F8D563F001D4BE2 /* User.swift */,
+				56233379206533E8006E2546 /* RunQueue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				56A7FA701F97E95700310E43 /* APIManager.swift in Sources */,
 				567AD1141FCEA0C800712A0A /* Logger.swift in Sources */,
 				567AD1121FCEA0A400712A0A /* SlimLogglyDestination.swift in Sources */,
+				5623337A206533E8006E2546 /* RunQueue.swift in Sources */,
 				567AD1161FCEA11200712A0A /* BaseViewController.swift in Sources */,
 				5625A38A1F7C303D00753525 /* TextField.swift in Sources */,
 				56331CF51FCDF4E00050AB26 /* Rechability+Ext.swift in Sources */,

@@ -20,6 +20,7 @@ class ChatCoordinator: BaseCoordinator<Void> {
     override func start() -> Observable<Void> {
         let viewController = ChatViewController.instantiate(with: ChatViewModel())
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.isNavigationBarHidden = true
         
         rootViewController.present(navigationController, animated: false)
         

@@ -13,6 +13,7 @@ import StreamView
 
 class Message {
     var text: String = ""
+    var name: String = ""
 }
 
 extension UIBezierPath {
