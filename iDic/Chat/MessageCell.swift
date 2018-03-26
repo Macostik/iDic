@@ -135,6 +135,7 @@ class BaseMessageCell: EntryStreamReusableView<Message> {
     
     internal func setupMessage(message: Message) {
         textView.text = message.text
+        textView.backgroundColor = UIColor.clear
     }
     
     override func layoutSubviews() {
@@ -148,7 +149,7 @@ final class MessageCell: BaseMessageCell {
     override func layoutWithMetrics(metrics: StreamMetricsProtocol) {
         super.layoutWithMetrics(metrics: metrics)
         bubbleView.strokeColor = UIColor.red
-        bubbleView.fillColor = UIColor.white
+        bubbleView.fillColor = UIColor.orange
         add(bubbleView) { (make) -> Void in
             make.leading.equalTo(self).offset(64)
             make.trailing.lessThanOrEqualTo(self).offset(-64)
@@ -175,30 +176,14 @@ final class MessageWithNameCell: BaseMessageCell {
     override func layoutWithMetrics(metrics: StreamMetricsProtocol) {
         super.layoutWithMetrics(metrics: metrics)
         bubbleView.strokeColor = UIColor.red
-        bubbleView.fillColor = UIColor.white
+        bubbleView.fillColor = UIColor.orange
         
         add(bubbleView) { (make) -> Void in
-            make.leading.equalTo(self).offset(64)
-            make.trailing.lessThanOrEqualTo(self).offset(-64)
-            make.top.equalTo(self)
-            make.width.greaterThanOrEqualTo(50)
+            make.edges.equalTo(self).inset(5)
         }
-        
-        bubbleView.add(nameLabel) { (make) -> Void in
-            make.leading.equalTo(bubbleView).offset(16)
-            make.trailing.lessThanOrEqualTo(bubbleView).offset(-16)
-            make.top.equalTo(bubbleView).offset(12)
-        }
-        
         bubbleView.add(textView) { (make) -> Void in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.equalTo(bubbleView).offset(16)
-            make.trailing.equalTo(bubbleView).offset(-16)
-            make.bottom.equalTo(bubbleView).offset(-12)
-        }
-        add(timeLabel) { (make) -> Void in
-            make.leading.equalTo(bubbleView.snp.trailing).offset(12)
-            make.centerY.equalTo(bubbleView)
+            make.top.bottom.greaterThanOrEqualTo(bubbleView).inset(5)
+            make.leading.trailing.equalTo(bubbleView).inset(12)
         }
     }
     
@@ -214,22 +199,17 @@ final class MyMessageCell: BaseMessageCell {
         super.layoutWithMetrics(metrics: metrics)
         bubbleView.fillColor = UIColor.orange
         bubbleView.isRightSide = true
-        textView.textColor = UIColor.white
+        textView.textColor = UIColor.black
         add(bubbleView) { (make) -> Void in
-            make.trailing.equalTo(self).offset(-24)
-            make.leading.greaterThanOrEqualTo(self).offset(64)
-            make.top.equalTo(self)
-            make.width.greaterThanOrEqualTo(50)
+            make.edges.equalTo(self).inset(5)
         }
         bubbleView.add(textView) { (make) -> Void in
-            make.top.equalTo(bubbleView).offset(12)
-            make.leading.equalTo(bubbleView).offset(16)
-            make.trailing.equalTo(bubbleView).offset(-16)
-            make.bottom.equalTo(bubbleView).offset(-12)
+            make.top.bottom.greaterThanOrEqualTo(bubbleView).inset(5)
+            make.leading.trailing.equalTo(bubbleView).inset(12)
         }
-        add(timeLabel) { (make) -> Void in
-            make.trailing.equalTo(bubbleView.snp.leading).offset(-12)
-            make.centerY.equalTo(bubbleView)
-        }
+//        add(timeLabel) { (make) -> Void in
+//            make.trailing.equalTo(bubbleView.snp.leading).offset(-12)
+//            make.centerY.equalTo(bubbleView)
+//        }
     }
 }

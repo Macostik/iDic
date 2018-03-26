@@ -19,7 +19,12 @@ UIScrollViewDelegate, StreamViewDataSource {
     var viewModel: ViewModel?
     private let disposeBag = DisposeBag()
     
-    var messages = [Message]()
+    var messages = [Message]() {
+        willSet {
+            messages = newValue
+            self.streamView.reload()
+        }
+    }
     
     let streamView = StreamView()
     
@@ -47,7 +52,12 @@ UIScrollViewDelegate, StreamViewDataSource {
         view.add(streamView) { (make) in
             make.top.equalTo(view)
             make.leading.trailing.equalTo(view)
+            make.bottom.equalTo(view)
         }
+        let firstMessage = Message()
+        firstMessage.name = "Yura"
+        firstMessage.text = "First message"
+        insertMessage(message: firstMessage)
     }
     
     override func viewDidLoad() {
@@ -55,7 +65,7 @@ UIScrollViewDelegate, StreamViewDataSource {
         
         messageWithNameMetrics.modifyItem = { [weak self] item in
             guard let message = item.entry as? Message else { return }
-            item.size = 70
+            item.size = message.text.heightWithFont(UIFont.systemFont(ofSize: 17.0), width: UIScreen.main.bounds.width) + 24
             item.insets.size.height = 10
         }
         messageMetrics.modifyItem = messageWithNameMetrics.modifyItem
@@ -91,8 +101,11 @@ UIScrollViewDelegate, StreamViewDataSource {
             print("text", data)
         }
         
-        socket.on("newMessage") {data, ack in
-            print("newMessage",  JSON(data).arrayValue.first!["message"].stringValue)
+        socket.on("newMessage") { [unowned self] data, ack in
+            let text = JSON(data).arrayValue.first!["message"].stringValue
+            let newMessage = Message()
+            newMessage.text = text
+            self.insertMessage(message: newMessage)
         }
         
         socket.connect()
