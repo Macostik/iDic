@@ -31,6 +31,10 @@ class BaseViewController: UIViewController {
         super.viewDidAppear(animated)
         LastVisibleScreen.lastAppearedScreenName = screenName
     }
+    
+    deinit {
+        Logger.log("\(NSStringFromClass(type(of: self))) deinit", color: .blue)
+    }
 }
 
 public protocol StoryboardBased: class {

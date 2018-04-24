@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Reachability
+import SwiftyJSON
 
 class LoginViewModel {
     var email = Driver<String>.empty()
@@ -35,9 +36,10 @@ class LoginViewModel {
         $0.isValid && $1.isValid && $2
         }.distinctUntilChanged()
     lazy var permition = Driver.combineLatest(email, password).map {($0, $1)}
-    lazy var signin: Driver<Any> = self.loginTap.withLatestFrom(permition)
-        .flatMapLatest { (email, password) -> Driver<Any> in
-            let a = APIManager.shared.signup(email, password: password).do(onNext: { one in
+    lazy var signin: Driver<JSON> = self.loginTap.withLatestFrom(permition)
+        .flatMapLatest { (email, password) -> Driver<JSON> in
+            let a = APIManager.signup(["email" : email, "name" : "Yuriy", "password" : password]).json()
+                .do(onNext: { one in
                 self.isSignin.onNext(true)
             }).asDriver(onErrorJustReturn: false)
             return a
