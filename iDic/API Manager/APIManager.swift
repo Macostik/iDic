@@ -42,7 +42,8 @@ enum APIManager: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .genericToU, .domicileToU, .voucherInfo, .login, .file, .domicileList, .leadRestrictions, .checkTrialAccess, .trialVoucher:
+            case .genericToU, .domicileToU, .voucherInfo, .login, .file, .domicileList,
+                 .leadRestrictions, .checkTrialAccess, .trialVoucher:
                 return .get
             case .signup:
                 return .post
@@ -93,9 +94,15 @@ enum APIManager: URLRequestConvertible {
             return URL
         }()
         
-        Logger.log("REQUEST for \n\t url - \(url)\n\t method - \(method)\n\t parameters - \(parameters ?? [:])", color: .orange)
         #if DEBUG
-            Logger.log("header - \n\t\(headers)", color: .orange)
+            Logger.warning("REQUEST for \n\t url - \(url) " +
+                "\n\t header - \(headers)" +
+                "\n\t parameters - \(parameters ?? [:])" +
+                "\n\t method - \(method)")
+            #else
+            Logger.warning("REQUEST for \n\t url - \(url) " +
+                "\n\t method - \(method)" +
+                "\n\t parameters - \(parameters ?? [:])")
         #endif
         
         var urlRequest = URLRequest(url: url)
@@ -133,7 +140,8 @@ enum APIManager: URLRequestConvertible {
                             errorDescription = "Multipart encoding failed: " + "\(error.localizedDescription)"
                             errorReason = "Failure Reason: " + "\(reason)"
                         case .responseValidationFailed(let reason):
-                            errorDescription = "Response validation failed: " + "\(error.localizedDescription)"
+                            errorDescription = "Response validation failed: " +
+                            "\(error.localizedDescription)"
                             errorReason = "Failure Reason: " + "\(reason)"
                             
                             switch reason {
@@ -141,25 +149,31 @@ enum APIManager: URLRequestConvertible {
                                 errorDescription = "Downloaded file could not be read"
                             case .missingContentType(let acceptableContentTypes):
                                 errorDescription = "Content Type Missing: " + "\(acceptableContentTypes)"
-                            case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                                errorDescription = "Response content type: " + "\(responseContentType) " + "was unacceptable: " + "\(acceptableContentTypes)"
+                            case .unacceptableContentType(let acceptableContentType, let responseContentType):
+                                errorDescription = "Response content type: " + "\(responseContentType) " +
+                                    "was unacceptable: " + "\(acceptableContentType)"
                             case .unacceptableStatusCode(let code):
                                 errorDescription = "Response status code was unacceptable: " + "\(code)"
                             }
                         case .responseSerializationFailed(let reason):
-                            errorDescription = "Response serialization failed: " + "\(error.localizedDescription)"
+                            errorDescription = "Response serialization failed: " +
+                            "\(error.localizedDescription)"
                             errorReason = "Failure Reason: " + "\(reason)"
                         }
-                        errorDescription =  "Underlying error: " + "\(error.underlyingError ?? RxError.unknown)"
+                        errorDescription =  "Underlying error: " +
+                        "\(error.underlyingError ?? RxError.unknown)"
                     } else if let error = error as? URLError {
                         errorDescription = "URLError occurred: " + "\(error)"
                     } else {
                         errorDescription = "Unknown error: " + "\(error)"
                     }
-                    Logger.log("API error for \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t" + errorDescription + errorReason, color: .red)
+                    Logger.error("API error for \n\t [\((file as! NSString).lastPathComponent):" +
+                        " \(line)] \(function):\n\t" + errorDescription + errorReason)
                     return Observable.error(error)
                 }
-                Logger.log("RESPONSE by request - \(response.request?.url?.absoluteString ?? "") \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t RESPONSE - \(response) \n\t\(response.timeline)", color: .green)
+                Logger.debug("RESPONSE by request - \(response.request?.url?.absoluteString ?? "") " +
+                    "\n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t " +
+                    "RESPONSE - \(response) \n\t\(response.timeline)"])
                 let json = JSON(response.result.value ?? NSNull())
                 return Observable.just(json)
         }
@@ -168,36 +182,52 @@ enum APIManager: URLRequestConvertible {
     func data(_ file: Any = #file, function: Any = #function, line: Int = #line) -> RxSwift.Observable<Data> {
         return RxAlamofire.requestData(self)
             .catchError { error in
-                Logger.log("API error for \n\t \(error.localizedDescription)", color: .red)
+                Logger.error("API error for \n\t \(error.localizedDescription)")
                 return Observable.error(error)
             }
             .shareReplay(1)
             .flatMapLatest { response -> RxSwift.Observable<Data> in
                 guard 200 ... 299 ~= response.0.statusCode else {
-                    Logger.log("API error for \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t" + "status code: \(response.0.statusCode)", color: .red)
-                    return Observable.error(NSError.init(domain: "", code: response.0.statusCode, userInfo: nil))
+                    Logger.error("API error for \n\t [\((file as! NSString).lastPathComponent): " +
+                        " \(line)] \(function):\n\t" + "status code: \(response.0.statusCode)")
+                    return Observable.error(NSError.init(domain: "",
+                                                         code: response.0.statusCode,
+                                                         userInfo: nil))
                 }
                 if response.0.statusCode == 204 {
-                    Logger.log("RESPONSE by request - \(response.0.url?.absoluteString ?? "") data is empty \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t" + "status code: \(response.0.statusCode)", color: .green)
-                    return Observable.error(NSError.init(domain: "", code: response.0.statusCode, userInfo: nil))
+                    Logger.debug("RESPONSE by request - \(response.0.url?.absoluteString ?? "") data is empty" +
+                        " \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t" +
+                        "status code: \(response.0.statusCode)"
+                    return Observable.error(NSError.init(domain: "",
+                                                         code: response.0.statusCode,
+                                                         userInfo: nil))
                 }
-                Logger.log("RESPONSE by request - \(response.0.url?.absoluteString ?? "") \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t RESPONSE - \(response)", color: .green)
+                Logger.debug("RESPONSE by request - \(response.0.url?.absoluteString ?? "")" +
+                    " \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):" +
+                    "\n\t RESPONSE - \(response)")
                 return Observable.just(response.1)
         }
     }
     
-    func response(_ file: Any = #file, function: Any = #function, line: Int = #line) -> RxSwift.Observable<(HTTPURLResponse, String)> {
+    func response(_ file: Any = #file,
+                  function: Any = #function,
+                  line: Int = #line) -> RxSwift.Observable<(HTTPURLResponse, String)> {
         return RxAlamofire.requestString(self)
             .catchError { error in
-                Logger.log("API error for \n\t \(error.localizedDescription)", color: .red)
+                Logger.error("API error for \n\t \(error.localizedDescription)")
                 return Observable.error(error)
             }
             .shareReplay(1)
             .flatMapLatest { response, string -> RxSwift.Observable<(HTTPURLResponse, String)> in
-                Logger.log("RESPONSE by request - \(response.url?.absoluteString ?? "") \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t RESPONSE - \(response)", color: .green)
+                Logger.debug("RESPONSE by request - \(response.url?.absoluteString ?? "") " +
+                    "\n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):" +
+                    "\n\t RESPONSE - \(response)")
                 guard 200 ... 299 ~= response.statusCode else {
-                    Logger.log("API error for \n\t [\((file as! NSString).lastPathComponent): \(line)] \(function):\n\t" + "status code: \(response.statusCode)", color: .red)
-                    return Observable.error(NSError.init(domain: "", code: response.statusCode, userInfo: nil))
+                    Logger.log("API error for \n\t [\((file as! NSString).lastPathComponent): \(line)] " +
+                        "\(function):\n\t" + "status code: \(response.statusCode)", color: .red)
+                    return Observable.error(NSError.init(domain: "",
+                                                         code: response.statusCode,
+                                                         userInfo: nil))
                 }
                 return Observable.just((response, string))
         }

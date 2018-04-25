@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
     }
     
     deinit {
-        Logger.log("\(NSStringFromClass(type(of: self))) deinit", color: .blue)
+        Logger.info("\(NSStringFromClass(type(of: self))) deinit")
     }
 }
 

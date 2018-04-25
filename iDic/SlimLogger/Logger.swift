@@ -59,4 +59,32 @@ struct Logger {
             Slim.info(message, filename: filename, line: line)
         #endif
     }
+    
+    static func error<T>(_ message: @autoclosure () -> T,
+                         color: LogColor = .default,
+                         filename: String = #file,
+                         line: Int = #line) {
+        log(message, color: .red, filename: filename, line: line)
+    }
+    
+    static func warning<T>(_ message: @autoclosure () -> T,
+                         color: LogColor = .default,
+                         filename: String = #file,
+                         line: Int = #line) {
+        log(message, color: .orange, filename: filename, line: line)
+    }
+    
+    static func debug<T>(_ message: @autoclosure () -> T,
+                           color: LogColor = .default,
+                           filename: String = #file,
+                           line: Int = #line) {
+        log(message, color: .green, filename: filename, line: line)
+    }
+    
+    static func info<T>(_ message: @autoclosure () -> T,
+                         color: LogColor = .default,
+                         filename: String = #file,
+                         line: Int = #line) {
+        log(message, color: .blue, filename: filename, line: line)
+    }
 }
